@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --cor-de-fundo: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), linear-gradient(180deg, #202020 0%, rgba(32, 32, 32, 0.00) 100%);
+    --container: #333533;
+    --cor-do-input: #515459;
+    --cor-do-botao-azul: #3D73FF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #FAFAF5;
+    font-family: "Open Sans";
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--cor-de-fundo);
+}
+
+main {
+    height: 100%;
+    background: url(../images/tela_de_fundo.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-login {
+    width: 550px;
+    height: 800px;
+    background-color: var(--container);
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.75);
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column; 
+    gap: 50px;
+}
+
+.container-login h1 {
+    font-family: "Press Start 2P", cursive;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    font-size: 24px;
+}
+
+.formulario-login label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formulario-login label input {
+    padding: 15px;
+    border-radius: 5px;
+    background: var(--cor-do-input);
+    font-size: 20px;
+    height: 50px;
+    outline: none;
+    border: 1px solid var(--cor-do-input);
+    transition: border 0.2s ease-in-out;
+}
+
+.formulario-login label input:focus {
+    border: 1px solid #F5F5F5;
+}
+
+.btn-azul {
+    width: 100%;
+    height: 72px;
+    background-color: var(--cor-do-botao-azul);
+    box-shadow: 8px 8px 0px 0px #3E250D;
+    text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+}
+
+.btn-cinza {
+    width: 100%;
+    height: 72px;
+    text-align: center;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: 1px solid #FFF;
+    background-color: var(--container);
+    box-shadow: 8px 8px 0px 0px #3E250D;
+}

@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Tetris</title>
 </head>
 <body>
-    
+    <main>
+        <div class="container-login">
+            <form action="" class="formulario-login">
+                <h1>LOGIN</h1>
+                <label>
+                    Digite o seu e-mail:
+                    <input type="email" name="email" id="email" placeholder="E-mail" required>
+                </label>
+                <label>
+                    Digite a sua senha:
+                    <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                    <a href="" class="esqueci-a-senha">Esqueci a minha senha</a>
+                </label>
+                <button type="submit" class="btn-azul">ENTRAR</button>
+            </form>
+            <div class="cadastrar">
+                <p>Não possui uma conta?</p>
+                <a href="../html/cadastro.html"><button class="btn-cinza">CADASTRE-SE</button></a>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
