@@ -3,28 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login_e_cadastro.css">
+    <link rel="stylesheet" href="../css/global.css">
     <title>Tetris</title>
 </head>
 <body>
     <main>
-        <div class="container-login">
-            <form action="" class="formulario-login">
+        <div class="container container--login">
+            <section class="titulo">
                 <h1>LOGIN</h1>
-                <label>
-                    Digite o seu e-mail:
-                    <input type="email" name="email" id="email" placeholder="E-mail" required>
-                </label>
-                <label>
-                    Digite a sua senha:
-                    <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                <p>Faça o login para continuar</p>
+            </section>
+            <form action="" class="formulario formulario--login">
+                <div class="input-inteiro">
+                    <label for="email">Digite o seu e-mail</label>
+                    <input type="email" 
+                            name="email" 
+                            id="email" 
+                            placeholder="E-mail" 
+                            autocomplete="off" 
+                            required>
+                </div>
+                <div class="input-inteiro">
+                    <label for="senha">Digite a sua senha</label>
+                    <input type="password" 
+                            name="senha" 
+                            id="senha" 
+                            placeholder="Senha" 
+                            autocomplete="off" 
+                            required>
                     <a href="" class="esqueci-a-senha">Esqueci a minha senha</a>
-                </label>
-                <button type="submit" class="btn-azul">ENTRAR</button>
+                </div>
+
+                <button type="submit" class="btn btn-azul">ENTRAR</button>
             </form>
             <div class="cadastrar">
                 <p>Não possui uma conta?</p>
-                <a href="../html/cadastro.html"><button class="btn-cinza">CADASTRE-SE</button></a>
+                <a href="../html/cadastro.html"><button class="btn btn-cinza">CADASTRE-SE</button></a>
             </div>
         </div>
     </main>

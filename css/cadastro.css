@@ -1,0 +1,15 @@
+.formulario-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dois-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-metade {
+    width: 49%;
+}

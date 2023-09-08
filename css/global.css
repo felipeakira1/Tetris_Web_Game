@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --cor-de-fundo: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), linear-gradient(180deg, #202020 0%, rgba(32, 32, 32, 0.00) 100%);
+    --container: #333533;
+    --cor-do-input: #515459;
+    --cor-do-botao-azul: #3D73FF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #FAFAF5;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--cor-de-fundo);
+}
