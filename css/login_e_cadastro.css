@@ -19,6 +19,25 @@ main {
     align-items: center;
 }
 
+.btn-voltar {
+    height: 60px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1F1F1F;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-voltar:hover {
+    font-size: 20px;
+    height: 70px;
+}
 /* Conteiner central */
 .container {
     background-color: var(--container);
@@ -74,7 +93,7 @@ main {
 
 .formulario input {
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     background: var(--cor-do-input);
     font-size: 20px;
     height: 50px;
