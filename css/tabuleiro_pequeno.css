@@ -71,14 +71,28 @@ body {
     font-size: 28px;
 }
 
+.cell {
+    width: 44px; /* Largura de cada célula */
+    height: 44px; /* Altura de cada célula */
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: var(--Container, #333533); /* Cor de fundo transparente */
+    box-sizing: border-box; /* Certifica-se de que a borda não afeta o tamanho total */
+    display: inline-block; /* Exibe as células em linha */
+    margin: 0;
+}
+
+/* Estilize o tabuleiro (opcional) */
 .tetris-board {
-    width: 460px;
-    height: 900px;
-    background: var(--Container, #333533);
-    border: 2px solid white;
-    border: solid;
+    width: 440px; /* Largura total do tabuleiro (10 células * 44px) */
+    height: 880px; /* Altura total do tabuleiro (20 células * 44px) */
+    background: #333533; /* Cor de fundo do tabuleiro */
+    border: 2px solid white; /* Borda branca ao redor do tabuleiro */
     margin-left: 40px;
     margin-right: 40px;
+    display: grid; /* Use um layout de grade para posicionar as células */
+    grid-template-columns: repeat(10, 1fr); /* 10 colunas */
+    grid-template-rows: repeat(20, 1fr); /* 20 linhas */
 }
 
 .right-panel {
