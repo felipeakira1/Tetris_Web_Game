@@ -1,39 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-
 body {
-    margin: 0;
-    padding: 0;
-    background: var(--Cor-de-fundo, linear-gradient(0deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), linear-gradient(180deg, #202020 0%, rgba(32, 32, 32, 0.00) 100%));
-    color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    padding-top: 42px;
+    align-items: center;
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
 }
 
-.game-container {
-    display: flex;
-    align-items: flex-start;
-    width: 1440px;
-    height: 1024px;
-}
-
-.left-panel,
-.right-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-}
-
+/* Botão pausar */
 .pause-button {
     margin-top: 20px;
     margin-right: 20px;
 }
-
-
 
 .pause-button button {
     background-color: gray;
@@ -46,105 +22,80 @@ body {
     cursor: pointer;
 }
 
-.time,
-.lines,
-.level {
-    width: 264px;
-    text-align: center;
-    background: var(--Container, #333533);
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 5px solid #FFF;
-
-}
-
-.time h2,
-.lines h2,
-.level h2 {
-    margin: 0;
-    font-size: 28px;
-}
-
-.time-value,
-.lines-value,
-.level-value {
-    font-size: 28px;
-}
-
-
-.tetris-board {
-    width: 440px;
-    height: 880px;
-    background: #333533;
-    border-radius: 5px;
-    border: 5px solid #FFF;
-    margin-left: 40px;
-    margin-right: 40px;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(20, 1fr);
-}
-
-.right-panel {
-    width: 264px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.btn-pausar {
+    height: 60px;
     padding: 20px;
-    margin-left: 20px;
+    border-radius: 30px;
+    background-color: #ff0000;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-.next-piece,
-.score {
-    width: 264px;
-    text-align: center;
-    background: var(--Container, #333533);
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 5px solid #FFF;
-}
-
-.next-piece {
+/* Conteudo do jogo */
+.game-container {
     display: flex;
-    padding: 10px;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+/* Coluna esquerda e direita */
+.logo {
+    width: 100%;
+}
+
+.panels {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
+    gap: 20px;
+    
+    width: 300px;
 }
 
-.next-piece h2,
-.score h2 {
-    color: #FFF;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.score-value {
-
-    color: #FFF;
-    font-size: 38px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.next-piece-preview {
-    width: 264px;
-    height: 264px;
-    background: var(--Container, #333533);
-    border-radius: 5px;
-    border: 5px solid #FFF;
+.panel {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    padding: 25px;
+    background-color: #1F1F1F;
+    border: 10px solid white;
+    box-shadow: 0px 0px 5px 1px white;
+
+    text-align: center;
 }
 
-.corpo {
-    font-family: "Press Start 2P";
+.panel h2 {
+    font-size: 24px;
+    color: #0000FF;
+}
+
+.panel div {
+    font-size: 24px;
+}
+
+#next-piece-preview {
+    width: 140px;
+    height: 140px;
+    border: 10px solid white;
+}
+
+/* TABULEIRO */
+.tetris-board {
+    width: 300px;
+    height: 600px;
+    box-sizing: content-box;
+    background: #333533;
+    border: 10px solid #FFF;
+}
+
+.tetris-board img {
+    width: 100%;
 }

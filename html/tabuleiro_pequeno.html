@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
-    <link rel="stylesheet" href="tabuleiro_pequeno.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/tabuleiro_pequeno.css">
 </head>
 
-<body class="corpo">
-    <div class="game-container">
-        <div class="pause-button">
+<body>
+    <main class="game-container">
+        <!-- <div class="pause-button">
             <button><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
                     <rect x="2" y="2" width="60" height="60" rx="12" fill="#515459" />
                     <path
@@ -18,36 +19,46 @@
                         fill="#F5F5F5" />
                     <rect x="2" y="2" width="60" height="60" rx="12" stroke="white" stroke-width="4" />
                 </svg>PAUSE</button>
-        </div>
-        <div class="left-panel">
-            <div class="score">
-                <h2>PONTOS</h2>
-                <div class="score-value">000000</div>
-            </div>
-            <div class="time">
-                <h2>TEMPO</h2>
-                <div class="time-value">00:00:00</div>
-            </div>
-        </div>
-        <div class="tetris-board">
-            <img src="tabuleiro_pequeno.png" alt="imagem_tabuleiro_pequeno">
-        </div>
-        <div class="right-panel">
-            <div class="next-piece">
-                <h2>PROXIMA</h2>
-                <div class="next-piece-preview"></div>
-            </div>
+        </div> -->
+        <button class="btn-pausar">PAUSAR</button>
+        <div class="panels">
+            <img src="../images/logo.png" alt="Logo" class="logo">
+            
 
-            <div class="lines">
+            <section class="panel">
+                <h2>TEMPO</h2>
+                <div id="time-value">00:00:00</div>
+            </section>
+
+            <section class="panel">
                 <h2>LINHAS</h2>
-                <div class="lines-value">10</div>
-            </div>
-            <div class="level">
+                <div id="lines-value">10</div>
+            </section>
+
+            <section class="panel">
                 <h2>NIVEL</h2>
-                <div class="level-value">5</div>
-            </div>
+                <div id="level-value">5</div>
+            </section>
         </div>
-    </div>
+
+        <div class="tetris-board">
+            <img src="../images/tabuleiro_pequeno.png" alt="imagem_tabuleiro_pequeno">
+        </div>
+
+        <div class="panels">
+            <section class="panel">
+                <h2>PONTOS</h2>
+                <div id="score-value">000000</div>
+            </section>
+
+            <section class="panel">
+                <h2>PROXIMA</h2>
+                <div id="next-piece-preview"></div>
+            </section>
+
+            
+        </div>
+    </main>
 </body>
 
 </html>
