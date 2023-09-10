@@ -8,19 +8,20 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start;
     height: 100vh;
     padding-top: 42px;
 }
 
 .game-container {
     display: flex;
-    align-items: flex-start; 
+    align-items: flex-start;
     width: 1440px;
     height: 1024px;
 }
 
-.left-panel, .right-panel {
+.left-panel,
+.right-panel {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -28,7 +29,7 @@ body {
 }
 
 .pause-button {
-    margin-top: 20px; 
+    margin-top: 20px;
     margin-right: 20px;
 }
 
@@ -54,8 +55,8 @@ body {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
-    border: solid;
-    
+    border: 5px solid #FFF;
+
 }
 
 .time h2,
@@ -71,28 +72,18 @@ body {
     font-size: 28px;
 }
 
-.cell {
-    width: 44px; /* Largura de cada célula */
-    height: 44px; /* Altura de cada célula */
-    border-radius: 5px;
-    border: 1px solid #555;
-    background: var(--Container, #333533); /* Cor de fundo transparente */
-    box-sizing: border-box; /* Certifica-se de que a borda não afeta o tamanho total */
-    display: inline-block; /* Exibe as células em linha */
-    margin: 0;
-}
 
-/* Estilize o tabuleiro (opcional) */
 .tetris-board {
-    width: 440px; /* Largura total do tabuleiro (10 células * 44px) */
-    height: 880px; /* Altura total do tabuleiro (20 células * 44px) */
-    background: #333533; /* Cor de fundo do tabuleiro */
-    border: 2px solid white; /* Borda branca ao redor do tabuleiro */
+    width: 440px;
+    height: 880px;
+    background: #333533;
+    border-radius: 5px;
+    border: 5px solid #FFF;
     margin-left: 40px;
     margin-right: 40px;
-    display: grid; /* Use um layout de grade para posicionar as células */
-    grid-template-columns: repeat(10, 1fr); /* 10 colunas */
-    grid-template-rows: repeat(20, 1fr); /* 20 linhas */
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
 }
 
 .right-panel {
@@ -112,15 +103,17 @@ body {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
-    border: solid;
+    border: 5px solid #FFF;
 }
-.next-piece{
+
+.next-piece {
     display: flex;
-padding: 10px;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 10px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
 }
 
 .next-piece h2,
@@ -131,20 +124,22 @@ gap: 10px;
     font-weight: 400;
     line-height: normal;
 }
-.score-value{
 
-color: #FFF;
-font-size: 38px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.score-value {
+
+    color: #FFF;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .next-piece-preview {
     width: 264px;
     height: 264px;
     background: var(--Container, #333533);
-    border: 2px solid white;
+    border-radius: 5px;
+    border: 5px solid #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
