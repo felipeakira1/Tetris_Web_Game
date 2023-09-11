@@ -20,3 +20,7 @@ body {
     min-height: 100vh;
     background: var(--cor-de-fundo);
 }
+
+a {
+    text-decoration: none;
+}
