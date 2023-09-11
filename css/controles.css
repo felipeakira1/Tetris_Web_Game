@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-voltar {
+    height: 60px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1F1F1F;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-voltar:hover {
+    font-size: 20px;
+    height: 70px;
+}
+
+.titulo {
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 50px;
+    background: rgba(217, 217, 217, 0.10);
+    text-align: center;
+    height: 100px;
+    padding-top: 30px;
+}
+
+.titulo h1 {
+    font-family: 'Press Start 2P';
+    font-size: 40px;
+    color: #00F;
+}

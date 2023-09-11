@@ -81,10 +81,12 @@ body {
     color: #fff;
     text-transform: uppercase;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     padding: 20px;
+    box-shadow: 8px 8px 0px 0px #3E250D;
 }
+
+
 .buttonblue {
     background-color: #3498db;
 }
@@ -213,15 +215,15 @@ table tbody tr td:first-child {
     border-radius: 50px;
     color: #1F1F1F;
     font-size: 20px;
-    font-family: "Press Start 2P",Arial, Helvetica, sans-serif;
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
     cursor: pointer;
 }
 
 
 @media (max-height: 725px) {
-     .logo {
+    .logo {
         height: 75px;
-     }
+    }
 }
 
 @media (max-height: 700px) {

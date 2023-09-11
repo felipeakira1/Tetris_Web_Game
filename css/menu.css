@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    gap: 100px;
+    gap: 300px;
 }
 
 .menu {
@@ -39,7 +39,7 @@ a {
     transition: background-color 0.3s ease;
     font-family: 'Press Start 2P';
     text-align: start;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 a:hover {
