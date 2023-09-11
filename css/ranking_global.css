@@ -36,7 +36,6 @@
 .titulo h1 {
     font-family: 'Press Start 2P';
     font-size: 40px;
-    color: #00F;
 }
 
 .ranking {
@@ -45,6 +44,8 @@
     width: 80%;
     border-radius: 30px;
     background: #333533;
+    border: 10px solid white;
+    padding: 5px;
 }
 
 .ranking th,
@@ -67,6 +68,6 @@
 }
 
 .usuario td {
-    color: #00F;
+    color: #98afff;
 
 }
