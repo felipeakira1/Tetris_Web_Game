@@ -38,3 +38,40 @@
     font-size: 40px;
     color: #00F;
 }
+
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 60%;
+    margin: 0 auto;
+    background-color: #333533;
+}
+
+.control {
+    text-align: start;
+    margin: 20px 0;
+    display: flex;
+    background-color: #1F1F1F;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.control img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 5px 10px;
+
+}
+
+.control p {
+    font-size: 18px;
+    color: white;
+    font-family: 'Press Start 2P';
+    margin-left: 20px;
+}
