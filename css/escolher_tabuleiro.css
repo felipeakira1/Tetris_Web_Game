@@ -1,0 +1,71 @@
+body {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+}
+.escolher-tabuleiro {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 60%;
+}
+
+.escolher-tabuleiro header h1 {
+    color: #0000FF;
+    text-align: center;
+}
+
+.tabuleiros {
+    display: flex;
+    flex-direction: row;
+
+}
+.escolher-tabuleiro .tabuleiro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    width: 50%;
+    padding: 30px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.tabuleiros img {
+    width: 50%;
+    background-color: #1F1F1F;
+    border: 10px solid white;
+    box-sizing: content-box;
+}
+
+.btn-escolher {
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 50px;
+    background-color: #3D73FF;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+}
+
+.btn-voltar {
+    height: 60px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1F1F1F;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-voltar:hover {
+    font-size: 20px;
+    height: 70px;
+}
