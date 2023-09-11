@@ -1,57 +1,72 @@
-header {
-    width: 499px;
-    height: 124px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding-top: 3px;
-    padding-left: 550px;
+.header {
+    display: flex;
+    flex-direction: row;
 }
 
-h1 {
-
-    color: #F5F5F5;
-    text-align: center;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    font-family: 'Press Start 2P';
+.btn-voltar {
+    height: 60px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1F1F1F;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-main {
-
-    border-radius: 50px;
-    padding-left: 370px;
-    margin: 10px;
-}
-
-table {
-    border-radius: 50px;
-    border-width: 10px;
-    width: 800px;
-    height: 600px;
-    border-collapse: collapse;
-
-}
-
-tr,
-td {
-
-    color: #FFF;
-    text-align: center;
+.btn-voltar:hover {
     font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: #333533;
-    font-family: "Press Start 2P";
+    height: 70px;
 }
 
+.titulo {
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 50px;
+    background: rgba(217, 217, 217, 0.10);
+    text-align: center;
+    height: 100px;
+    padding-top: 30px;
+}
 
-.div-img {
-    width: 50px;
+.titulo h1 {
+    font-family: 'Press Start 2P';
+    font-size: 40px;
+    color: #00F;
+}
+
+.ranking {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+    border-radius: 30px;
+    background: #333533;
+}
+
+.ranking th,
+.ranking td {
+    border: none;
+    padding: 10px;
+    font-family: "Press Start 2P";
+    font-size: 20px;
+    text-align: center;
+}
+
+.ranking th {
+
+    color: #fff;
+    border-radius: 30px;
+}
+
+.ranking tr:nth-child(even) {
+    background-color: #1F1F1F
+}
+
+.usuario td {
+    color: #00F;
 
 }

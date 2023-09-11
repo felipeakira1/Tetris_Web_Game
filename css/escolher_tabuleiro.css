@@ -51,6 +51,10 @@ body {
     font-size: 20px;
 }
 
+.btn-escolher:hover {
+    background-color: #2980b9;
+}
+
 
 
 .btn-voltar {

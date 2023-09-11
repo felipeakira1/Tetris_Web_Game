@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/tabuleiros.css">
 </head>
+
 <body>
     <main class="game-container">
         <!-- PAUSAR O JOGO -->
@@ -16,7 +18,7 @@
                 <h2>PAUSADO</h2>
                 <button class="buttonblue" onclick="voltarJogo()">Voltar ao jogo</button>
                 <a href="../html/controles.html"><button class="buttonblue">Controles</button></a>
-                <a href="../html/ranking.html"><button class="buttonblue">Ranking global</button></a>
+                <a href="../html/ranking_global.html"><button class="buttonblue">Ranking global</button></a>
                 <a href="../html/menu.html"><button class="buttonred">Sair</button></a>
             </section>
         </div>
@@ -25,17 +27,17 @@
         <!-- CONTEUDO -->
         <div class="conteudo">
             <div class="panels">
-            
+
                 <section class="panel">
                     <h2>PONTOS</h2>
                     <div id="score-value">000000</div>
                 </section>
-    
+
                 <section class="panel">
                     <h2>TEMPO</h2>
                     <div id="time-value">00:00:00</div>
                 </section>
-                
+
                 <section class="panel ranking">
                     <h2>RANKING PESSOAL</h2>
                     <p>@felipeakira_</p>
@@ -54,7 +56,7 @@
                                 <td>12020</td>
                                 <td>00:05:32</td>
                                 <td>5</td>
-                            </tr> 
+                            </tr>
                             <tr>
                                 <td>2.</td>
                                 <td>11340</td>
@@ -70,24 +72,24 @@
                         </tbody>
                     </table>
                 </section>
-                
+
             </div>
-    
+
             <div class="tetris-board">
                 <img src="../images/tabuleiro_grande.png" alt="imagem_tabuleiro_pequeno">
             </div>
-    
+
             <div class="panels">
                 <section class="panel">
                     <h2>PROXIMA</h2>
                     <div id="next-piece-preview"></div>
                 </section>
-    
+
                 <section class="panel">
                     <h2>LINHAS</h2>
                     <div id="lines-value">10</div>
                 </section>
-    
+
                 <section class="panel">
                     <h2>NIVEL</h2>
                     <div id="level-value">5</div>
@@ -99,4 +101,5 @@
     </main>
     <script src="../js/jogo.js"></script>
 </body>
+
 </html>
