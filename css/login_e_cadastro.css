@@ -147,3 +147,7 @@ main {
 .formulario--cadastro > button {
     margin-top: 20px;
 }
+
+input[readonly] {
+    color: grey;
+}
