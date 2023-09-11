@@ -55,13 +55,13 @@ main {
 
 .container--cadastro {
     width: 800px;
-    gap: 30px;
+    gap: 20px;
 }
 
 /* Titulo */
 .titulo > h1 {
     font-family: "Press Start 2P", cursive;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 /* Formulário */
@@ -77,7 +77,7 @@ main {
 
 .formulario--cadastro {
     gap: 15px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .formulario > .input-inteiro {
@@ -93,10 +93,10 @@ main {
 
 .formulario input {
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     background: var(--cor-do-input);
-    font-size: 20px;
-    height: 50px;
+    font-size: 14px;
+    height: 40px;
     outline: none;
     border: 1px solid var(--cor-do-input);
     transition: border 0.3s ease-in-out;
@@ -136,7 +136,7 @@ main {
 
 .btn {
     width: 100%;
-    height: 72px;
+    height: 55px;
     box-shadow: 8px 8px 0px 0px #3E250D;
     font-family: "Press Start 2P", cursive;
     font-size: 18px;
@@ -150,4 +150,47 @@ main {
 
 input[readonly] {
     color: grey;
+}
+
+@media (min-height: 850px) {
+    .formulario--cadastro {
+        font-size: 20px;
+    }
+
+    .formulario input {
+        font-size: 20px;
+    }
+
+    .btn {
+        height: 60px;
+    }
+}
+
+@media (max-height: 850px) {
+    .formulario--cadastro {
+        font-size: 18px;
+    }
+
+    .formulario input {
+        font-size: 18px;
+    }
+}
+
+@media (max-height: 800px) {
+    .formulario--cadastro {
+        font-size: 16px;
+    }
+
+    .formulario input {
+        font-size: 16px;
+    }
+}
+@media (max-height: 733px) {
+    .formulario--cadastro {
+        gap: 10px;
+    }
+    .btn {
+        font-size: 16px;
+        height: 50px;
+    }
 }
