@@ -1,0 +1,218 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+}
+
+/* Botão pausar */
+.pause-button {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.pause-button button {
+    background-color: gray;
+    color: black;
+    width: 56px;
+    height: 56px;
+    font-size: 12px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.btn-pausar {
+    height: 60px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1F1F1F;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-pausar:hover {
+    background-color: #ff0000;
+}
+
+#fundo-pausa {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.conteudo-pausa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 500px;
+    padding: 40px;
+    border: 10px solid white;
+    box-shadow: 0px 0px 5px 1px white;
+    background-color: #3A3A3A;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.conteudo-pausa h2 {
+    color: #FF0000;
+    text-align: center;
+    font-size: 24px;
+}
+
+.conteudo-pausa button {
+    width: 100%;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 20px;
+}
+.buttonblue {
+    background-color: #3498db;
+}
+
+.buttonblue:hover {
+    background-color: #2980b9;
+}
+
+.buttonred {
+    background-color: #FF0000;
+}
+
+.buttonred:hover {
+    background-color: #C60000;
+}
+
+/* Conteudo do jogo */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+/* Coluna esquerda e direita */
+.logo {
+    height: 100px;
+    margin: 0 auto;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.panels {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    width: 300px;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    padding: 20px;
+    background-color: #1F1F1F;
+    border: 10px solid white;
+    box-shadow: 0px 0px 5px 1px white;
+
+    text-align: center;
+}
+
+.panel h2 {
+    font-size: 20px;
+}
+
+.panel div {
+    font-size: 20px;
+}
+
+#next-piece-preview {
+    width: 140px;
+    height: 140px;
+    border: 10px solid white;
+}
+
+/* TABULEIRO */
+.tetris-board {
+    width: 300px;
+    height: 600px;
+    box-sizing: content-box;
+    background: #333533;
+    border: 10px solid #FFF;
+}
+
+.tetris-board img {
+    width: 100%;
+}
+
+.ranking {
+    width: auto;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0 10px;
+}
+
+tr {
+    margin-top: 20px;
+}
+
+table thead td {
+    padding: 10px 10px;
+}
+
+table thead tr td {
+    font-size: 12px;
+}
+
+table tbody tr td {
+    font-size: 12px;
+    padding: 5px 0;
+}
+
+table tbody tr td:first-child {
+    text-align: end;
+    padding-right: 10px;
+}
+
+.iniciar {
+    width: 100%;
+    padding: 20px;
+    border: 10px solid white;
+    box-shadow: 0px 0px 5px 1px white;
+    text-align: center;
+    background-color: #2DFF2D;
+    border-radius: 50px;
+    color: #1F1F1F;
+    font-size: 20px;
+    font-family: "Press Start 2P",Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
