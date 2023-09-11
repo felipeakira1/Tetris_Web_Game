@@ -2,11 +2,11 @@
     margin: 50px auto;
     max-width: 60%;
     text-align: left;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
+
 
 }
 
