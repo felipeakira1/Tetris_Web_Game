@@ -45,6 +45,7 @@ body {
 
 .btn-escolher {
     padding: 20px 0;
+    display: block;
     width: 100%;
     background-color: #3D73FF;
     box-shadow: 8px 8px 0px 0px #3E250D;

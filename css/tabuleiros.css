@@ -74,12 +74,13 @@ body {
     font-size: 24px;
 }
 
-.conteudo-pausa button {
+.conteudo-pausa a , .conteudo-pausa button{
     width: 100%;
     font-family: 'Press Start 2P', sans-serif;
     font-size: 18px;
     color: #fff;
     text-transform: uppercase;
+    text-align: center;
     border: none;
     cursor: pointer;
     padding: 20px;
