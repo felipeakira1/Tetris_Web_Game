@@ -24,3 +24,19 @@ body {
 a {
     text-decoration: none;
 }
+
+header.titulo {
+    min-width: 50%;
+    max-width: 60%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 50px;
+    background: var(--container);
+}
+
+header.titulo h1 {
+    text-align: center;
+    width: 100%;
+    font-family: 'Press Start 2P';
+    font-size: 28px;
+}
