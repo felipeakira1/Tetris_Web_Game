@@ -169,6 +169,8 @@ body {
     box-sizing: content-box;
     background: #333533;
     border: 10px solid #FFF;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .tetris-board img {
@@ -220,6 +222,14 @@ table tbody tr td:first-child {
     cursor: pointer;
 }
 
+
+.celula_fundo {
+    width: 30px;
+    height: 30px;
+    background-color: #1f1f1f;
+    border: 1px solid #3F3F3F;
+    border-radius: 5px;
+}
 
 @media (max-height: 725px) {
     .logo {
