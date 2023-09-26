@@ -35,6 +35,8 @@ function atualizarTabuleiro() {
             celula.classList.add('celula');
             if(matriz[i][j] === 1) {
                 celula.classList.add('fundo-vermelho');
+            } else if (matriz[i][j] === 11) {
+                celula.classList.add('fundo-vermelho');
             }
             tabuleiro.appendChild(celula);
         }
@@ -43,9 +45,11 @@ function atualizarTabuleiro() {
 }
 
 function gerarPeca() {
-    return [[1, 0],
-            [1, 0],
-            [1, 1]];
+    // return [[1, 1],
+    //         [0, 1],
+    //         [0, 1]];
+    return [[1, 0, 0],
+            [1, 1, 1]];
 }
 
 function adicionarPecaAoTabuleiro() {
@@ -63,39 +67,63 @@ function adicionarPecaAoTabuleiro() {
 
 // Função para verificar se é possível mover a peça para baixo
 function podeMoverParaBaixo() {
-    
+    if((pecaAtual.length + yPecaAtual >= NUM_LINHAS)) {
+        return false;
+    } else {
+        for(let i = pecaAtual.length - 1; i >= 0; i--) {
+            for(let j = pecaAtual[0].length - 1; j >= 0; j--) {
+                console.log("Linha:" + i);
+                console.log("Coluna:" + j);
+                if(pecaAtual[i][j] === 1) {
+                    if (matriz[yPecaAtual + i + 1][xPecaAtual + j] > 1) {
+                        return false;
+                    }
+                }
+                console.log("Proxima peca")
+            }
+        }
+    }
+    return true;
 }
 
 // Função para mover a peça para baixo
 function moverPecaParaBaixo() {
-    for(let i = 0; i < pecaAtual.length; i++) { // LINHA
-        for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
-            console.log(yPecaAtual)
-            console.log(xPecaAtual)
-            if(pecaAtual[i][j] === 1) {
-                matriz[yPecaAtual + i][xPecaAtual + j] = 0;
+    if(podeMoverParaBaixo()) {
+        for(let i = 0; i < pecaAtual.length; i++) { // LINHA
+            for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
+                if(pecaAtual[i][j] === 1) {
+                    matriz[yPecaAtual + i][xPecaAtual + j] = 0;
+                }
             }
         }
-    }
-    atualizarTabuleiro();
-    yPecaAtual += 1;
-    for(let i = 0; i < pecaAtual.length; i++) { // LINHA
-        for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
-            console.log(yPecaAtual)
-            console.log(xPecaAtual)
-            if(pecaAtual[i][j] === 1) {
-                matriz[yPecaAtual + i][xPecaAtual + j] = 1;
+        atualizarTabuleiro();
+        yPecaAtual += 1;
+        for(let i = 0; i < pecaAtual.length; i++) { // LINHA
+            for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
+                if(pecaAtual[i][j] === 1) {
+                    matriz[yPecaAtual + i][xPecaAtual + j] = 1;
+                }
             }
         }
+        atualizarTabuleiro();
+    } else {
+        for(let i = 0; i < pecaAtual.length; i++) { // LINHA
+            for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
+                if(pecaAtual[i][j] === 1) {
+                    matriz[yPecaAtual + i][xPecaAtual + j] = 11;
+                }
+            }
+        }
+        atualizarTabuleiro();
+        pecaAtual = gerarPeca();
+        adicionarPecaAoTabuleiro();
     }
-    atualizarTabuleiro();
+    
 }
 
 function moverPecaParaEsquerda() {
     for(let i = 0; i < pecaAtual.length; i++) { // LINHA
         for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
-            console.log(yPecaAtual)
-            console.log(xPecaAtual)
             if(pecaAtual[i][j] === 1) {
                 matriz[yPecaAtual + i][xPecaAtual + j] = 0;
             }
@@ -105,8 +133,6 @@ function moverPecaParaEsquerda() {
     xPecaAtual -= 1;
     for(let i = 0; i < pecaAtual.length; i++) { // LINHA
         for(let j = 0; j < pecaAtual[0].length; j++) { // COLUNA
-            console.log(yPecaAtual)
-            console.log(xPecaAtual)
             if(pecaAtual[i][j] === 1) {
                 matriz[yPecaAtual + i][xPecaAtual + j] = 1;
             }
