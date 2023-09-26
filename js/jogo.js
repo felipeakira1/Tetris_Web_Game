@@ -44,12 +44,25 @@ function atualizarTabuleiro() {
     console.log(matriz);
 }
 
+const pecas = [
+    [[1],
+     [1],
+     [1],
+     [1]],
+    [[1, 1],
+     [0, 1],
+     [0, 1]],
+    [[1, 0],
+     [1, 1],
+     [0, 1]],
+    [[1, 1],
+     [1, 1]],
+    [[1]]
+]
+
 function gerarPeca() {
-    // return [[1, 1],
-    //         [0, 1],
-    //         [0, 1]];
-    return [[1, 0, 0],
-            [1, 1, 1]];
+    let tipoPeca = Math.floor(Math.random() * pecas.length);
+    return pecas[tipoPeca];
 }
 
 function adicionarPecaAoTabuleiro() {
