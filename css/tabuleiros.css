@@ -235,6 +235,12 @@ table tbody tr td:first-child {
     box-shadow: 0px 0px 5px 1px red;
 }
 
+.fundo-azul {
+    background-color: blue;
+    border: 5px inset blue;
+    box-shadow: 0px 0px 5px 1px blue;
+
+}
 @media (max-height: 725px) {
     .logo {
         height: 75px;
