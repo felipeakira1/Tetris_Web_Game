@@ -166,7 +166,9 @@ function moverPecaParaBaixo() {
                 }
             }
         }
-        verificarLinhasCompletas();
+        let num_linhas_completas = verificarLinhasCompletas();
+        
+        moverLinhasParaBaixo(num_linhas_completas);
 
         atualizarTabuleiro();
         pecaAtual = gerarPeca();
