@@ -77,10 +77,9 @@ function atualizarTabuleiro() {
 }
 
 const pecas = [
-    [[2],
-     [2],
-     [2],
-     [2]]
+    [[2, 0],
+     [2, 0],
+     [2, 2]]
 ]
 
 // Função para gerar uma nova peça aleatória
@@ -122,6 +121,23 @@ function podeMoverParaBaixo() {
     return true;
 }
 
+function verificarLinhasCompletas() {
+    let num_celulas_por_linha = 0;
+    let num_linhas_completas = 0;
+    for(let i = 0; i < NUM_LINHAS; i++) {
+        num_linhas_completas = 0;
+        for(let j = 0; j < NUM_COLUNAS; j++) {
+            if(matriz[i][j] != 0) {
+                num_celulas_por_linha++;
+            }
+        }
+        if(num_celulas_por_linha === NUM_COLUNAS) {
+            num_linhas_completas++;
+        }
+    }
+    return num_linhas_completas;
+}
+
 // Função para mover a peça para baixo
 function moverPecaParaBaixo() {
     if(podeMoverParaBaixo()) {
@@ -150,6 +166,8 @@ function moverPecaParaBaixo() {
                 }
             }
         }
+        verificarLinhasCompletas();
+
         atualizarTabuleiro();
         pecaAtual = gerarPeca();
         adicionarPecaAoTabuleiro();
