@@ -16,7 +16,7 @@ var INTERVALO_QUEDA = 1000; // Intervalo de queda inicial da peça em milissegun
 var pecaAtual = null;       // Peça atual
 var xPecaAtual;             // Posição X da peça atual
 var yPecaAtual;             // Posição Y da peça atual
-
+let funcao_queda;
 const tabuleiro = document.getElementById('tabuleiro'); // Elemento do tabuleiro no HTML
 var matriz = []; // Matriz representando o tabuleiro
 
@@ -32,7 +32,7 @@ function criarMatriz(linhas, colunas) {
 
 // Função para iniciar a queda da peça em intervalos regulares
 function iniciarQueda() {
-    setInterval(() => {
+    funcao_queda = setInterval(() => {
         moverPecaParaBaixo();
     }, INTERVALO_QUEDA);
 }
@@ -41,6 +41,7 @@ function iniciarQueda() {
 botaoIniciar = document.getElementById('btn-iniciar');
 botaoIniciar.addEventListener('click', (event) => {
     event.preventDefault();
+    clearInterval(funcao_queda);
     matriz = criarMatriz(NUM_LINHAS, NUM_COLUNAS);
     adicionarPecaAoTabuleiro();
     iniciarQueda();
@@ -62,14 +63,16 @@ document.addEventListener('keydown', function(event) {
 // Função para atualizar a aparência do tabuleiro no HTML
 function atualizarTabuleiro() {
     tabuleiro.innerHTML = '';
-    for(let i = 0; i < NUM_LINHAS; i++) {
-        for(let j = 0; j < NUM_COLUNAS; j++) {
+    for(let i = 0; i < matriz.length; i++) {
+        for(let j = 0; j < matriz[0].length; j++) {
             const celula = document.createElement('div'); // Cria um elemento <div> para representar uma célula do tabuleiro
             celula.classList.add('celula'); // Adiciona a classe 'celula' à célula
             if(matriz[i][j] === 1 || matriz[i][j] === 11) {
                 celula.classList.add('fundo-vermelho');
             } else if(matriz[i][j] === 2 || matriz[i][j] === 12) {
                 celula.classList.add('fundo-azul');
+            } else if(matriz[i][j] === 20) {
+                celula.classList.add('branco');
             }
             tabuleiro.appendChild(celula); // Adiciona a célula ao tabuleiro no HTML
         }
@@ -128,15 +131,8 @@ function moverLinhasParaBaixo(obj) {
 
     for(let i = obj.indice_linha; i < (obj.indice_linha + obj.num_linhas_completas); i++) {
         for(let j = 0; j < NUM_COLUNAS; j++) {
-            matriz[i][j] = '-1';
+            matriz[i][j] = 20;
         }
-    }
-    matriz.splice(obj.indice_linha, obj.num_linhas_completas);
-
-    // Adicionar linhas no topo
-    for(let i = 0; i < obj.num_linhas_completas; i++) {
-        const linha = Array(NUM_COLUNAS).fill(0);
-        matriz.unshift(linha);
     }
 }
 
@@ -162,6 +158,7 @@ function verificarLinhasCompletas() {
                 contador_iteracao++;
             console.log("Linha: ", obj.indice_linha);
             console.log("Numero de linhas: " + obj.num_linhas_completas);
+            console.table(matriz);
         }
     }
     
@@ -169,6 +166,13 @@ function verificarLinhasCompletas() {
 }
 
 // Função para mover a peça para baixo
+function tremer() {
+    tabuleiro.classList.add('tremer');
+    setTimeout(() => {
+        tabuleiro.classList.remove('tremer')
+    }, 300);
+}
+
 function moverPecaParaBaixo() {
     if(podeMoverParaBaixo()) {
         for(let i = 0; i < pecaAtual.length; i++) {
@@ -199,7 +203,19 @@ function moverPecaParaBaixo() {
         let obj = verificarLinhasCompletas();
         if(obj.num_linhas_completas > 0) {
             moverLinhasParaBaixo(obj);
-        }
+            tremer();
+            atualizarTabuleiro();
+            setTimeout(function() {
+                matriz.splice(obj.indice_linha, obj.num_linhas_completas);
+                atualizarTabuleiro();
+                for(let i = 0; i < obj.num_linhas_completas; i++) {
+                    const linha = Array(NUM_COLUNAS).fill(0);
+                    matriz.unshift(linha);
+                    yPecaAtual++;
+                }
+                atualizarTabuleiro();
+            }, 500);
+         }
 
         atualizarTabuleiro();
         pecaAtual = gerarPeca();
