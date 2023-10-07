@@ -77,8 +77,8 @@ function atualizarTabuleiro() {
 }
 
 const pecas = [
-    [[2, 0],
-     [2, 0],
+    [[2, 2],
+     [2, 2],
      [2, 2]]
 ]
 
@@ -121,21 +121,51 @@ function podeMoverParaBaixo() {
     return true;
 }
 
-function verificarLinhasCompletas() {
-    let num_celulas_por_linha = 0;
-    let num_linhas_completas = 0;
-    for(let i = 0; i < NUM_LINHAS; i++) {
-        num_linhas_completas = 0;
+function moverLinhasParaBaixo(obj) {
+    // Calcular pontuação
+
+    // Remover linhas completas
+
+    for(let i = obj.indice_linha; i < (obj.indice_linha + obj.num_linhas_completas); i++) {
         for(let j = 0; j < NUM_COLUNAS; j++) {
-            if(matriz[i][j] != 0) {
-                num_celulas_por_linha++;
-            }
-        }
-        if(num_celulas_por_linha === NUM_COLUNAS) {
-            num_linhas_completas++;
+            matriz[i][j] = '-1';
         }
     }
-    return num_linhas_completas;
+    matriz.splice(obj.indice_linha, obj.num_linhas_completas);
+
+    // Adicionar linhas no topo
+    for(let i = 0; i < obj.num_linhas_completas; i++) {
+        const linha = Array(NUM_COLUNAS).fill(0);
+        matriz.unshift(linha);
+    }
+}
+
+function verificarLinhasCompletas() {
+    let contador_iteracao = 0;
+    let obj = {
+        num_celulas_por_linha: 0,
+        num_linhas_completas: 0,
+        indice_linha: 0
+    };
+
+    for(let i = 0; i < NUM_LINHAS; i++) {
+        obj.num_celulas_por_linha = 0;
+        for(let j = 0; j < NUM_COLUNAS; j++) {
+            if(matriz[i][j] != 0) {
+                obj.num_celulas_por_linha++;
+            }
+        }
+        if(obj.num_celulas_por_linha === NUM_COLUNAS) {
+            obj.num_linhas_completas++;
+            if(contador_iteracao == 0)
+                obj.indice_linha = i;
+                contador_iteracao++;
+            console.log("Linha: ", obj.indice_linha);
+            console.log("Numero de linhas: " + obj.num_linhas_completas);
+        }
+    }
+    
+    return obj;
 }
 
 // Função para mover a peça para baixo
@@ -166,9 +196,10 @@ function moverPecaParaBaixo() {
                 }
             }
         }
-        let num_linhas_completas = verificarLinhasCompletas();
-        
-        moverLinhasParaBaixo(num_linhas_completas);
+        let obj = verificarLinhasCompletas();
+        if(obj.num_linhas_completas > 0) {
+            moverLinhasParaBaixo(obj);
+        }
 
         atualizarTabuleiro();
         pecaAtual = gerarPeca();
@@ -211,8 +242,6 @@ function moverPecaParaDireita() {
     xPecaAtual += 1;
     for(let i = 0; i < pecaAtual.length; i++) {
         for(let j = 0; j < pecaAtual[0].length; j++) {
-            console.log(yPecaAtual)
-            console.log(xPecaAtual)
             if(pecaAtual[i][j] != 0) {
                 matriz[yPecaAtual + i][xPecaAtual + j] = pecaAtual[i][j];
             }

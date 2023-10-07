@@ -227,8 +227,13 @@ table tbody tr td:first-child {
     height: 30px;
     background-color: #1f1f1f;
     border: 1px solid #3F3F3F;
-    border-radius: 5px;
 }
+
+.branco {
+    background-color: white;
+    transition: all 0.5s ease-in;
+}
+
 .fundo-vermelho {
     background-color: red;
     border: 5px inset red;
