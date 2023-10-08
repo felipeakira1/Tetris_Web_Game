@@ -125,7 +125,7 @@ function podeMoverParaBaixo() {
     return true;
 }
 
-function moverLinhasParaBaixo(obj) {
+function linhasCompletasEmBranco(obj) {
     // Calcular pontuação
 
     // Remover linhas completas
@@ -137,10 +137,16 @@ function moverLinhasParaBaixo(obj) {
 }
 
 function verificarLinhasCompletas() {
-    let contador_iteracao = 0;
+
+    // Objeto que contém informações sobre as linhas completas
     let obj = {
-        num_celulas_por_linha: 0,
-        num_linhas_completas: 0,
+        // Contador que verifica se uma linha foi completada, ao contar quantas células completas há naquela linha
+        num_celulas_por_linha: 0, 
+
+        // Contador que armazena o número de linhas completadas de uma vez
+        num_linhas_completas: 0, 
+
+        // Atributo que armazena o índice da primeira linha que foi completada
         indice_linha: 0
     };
 
@@ -151,11 +157,12 @@ function verificarLinhasCompletas() {
                 obj.num_celulas_por_linha++;
             }
         }
+
         if(obj.num_celulas_por_linha === NUM_COLUNAS) {
-            obj.num_linhas_completas++;
-            if(contador_iteracao == 0)
+            if(obj.num_linhas_completas == 0)
                 obj.indice_linha = i;
-                contador_iteracao++;
+            
+            obj.num_linhas_completas++;
             console.log("Linha: ", obj.indice_linha);
             console.log("Numero de linhas: " + obj.num_linhas_completas);
             console.table(matriz);
@@ -171,6 +178,24 @@ function tremer() {
     setTimeout(() => {
         tabuleiro.classList.remove('tremer')
     }, 300);
+}
+
+function removerLinhas(obj) {
+    // Após 0,5s exuta a seguinte função:
+    setTimeout(function() {
+        // Remove as linhas da matriz e atualiza o tabuleiro
+        matriz.splice(obj.indice_linha, obj.num_linhas_completas);
+        atualizarTabuleiro();
+
+        // Adiciona n novas linhas ao topo da matriz e atualiza o tabuleiro
+        for(let i = 0; i < obj.num_linhas_completas; i++) {
+            const linha = Array(NUM_COLUNAS).fill(0);
+            matriz.unshift(linha);
+            yPecaAtual++;
+        }
+        atualizarTabuleiro();
+
+    }, 500);
 }
 
 function moverPecaParaBaixo() {
@@ -199,6 +224,7 @@ function moverPecaParaBaixo() {
             2. Verifica se ao parar a peça, alguma linha é completada
             3. 
         */
+
         // 1. Define o valor de cada célula da peça parada como +10
         for(let i = 0; i < pecaAtual.length; i++) {
             for(let j = 0; j < pecaAtual[0].length; j++) {
@@ -209,27 +235,22 @@ function moverPecaParaBaixo() {
         }
 
         // 2. Verifica se ao parar a peça, alguma linha é completada
+            /* A função verificarLinhasCompletas retorna um objeto com 
+                atributos que representam informações sobre as linhas completadas*/
         let obj = verificarLinhasCompletas();
-
-
         if(obj.num_linhas_completas > 0) {
-            moverLinhasParaBaixo(obj);
+            // 3. Calcula a pontuação total
+
+            
+            // 4. Animação das linhas completadas desaparecendo
+            linhasCompletasEmBranco(obj);
             tremer();
             atualizarTabuleiro();
-            
-            setTimeout(function() {
-                matriz.splice(obj.indice_linha, obj.num_linhas_completas);
-                atualizarTabuleiro();
-                for(let i = 0; i < obj.num_linhas_completas; i++) {
-                    const linha = Array(NUM_COLUNAS).fill(0);
-                    matriz.unshift(linha);
-                    yPecaAtual++;
-                }
-                atualizarTabuleiro();
-            }, 500);
+            removerLinhas(obj);
          }
 
         atualizarTabuleiro();
+
         pecaAtual = gerarPeca();
         adicionarPecaAoTabuleiro();
     }
