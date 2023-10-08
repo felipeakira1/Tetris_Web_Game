@@ -94,6 +94,7 @@ function gerarPeca() {
 // Função para adicionar a peça atual ao tabuleiro
 function adicionarPecaAoTabuleiro() {
     // Inserir verificação se é possível adicionar mais uma peça ao tabuleiro
+
     // if(!verificarFimJogo()) {
     pecaAtual = gerarPeca(); // Gera uma nova peça aleatória
     xPecaAtual = Math.floor(NUM_COLUNAS / 2) - 1; // Define a posição X inicial da peça
@@ -128,7 +129,6 @@ function moverLinhasParaBaixo(obj) {
     // Calcular pontuação
 
     // Remover linhas completas
-
     for(let i = obj.indice_linha; i < (obj.indice_linha + obj.num_linhas_completas); i++) {
         for(let j = 0; j < NUM_COLUNAS; j++) {
             matriz[i][j] = 20;
@@ -193,6 +193,13 @@ function moverPecaParaBaixo() {
         }
         atualizarTabuleiro();
     } else {
+        /*
+            Bloco de código executado se não puder mais mover peça para baixo:
+            1. Define o valor de cada célula da peça parada como +10
+            2. Verifica se ao parar a peça, alguma linha é completada
+            3. 
+        */
+        // 1. Define o valor de cada célula da peça parada como +10
         for(let i = 0; i < pecaAtual.length; i++) {
             for(let j = 0; j < pecaAtual[0].length; j++) {
                 if(pecaAtual[i][j] != 0) {
@@ -200,11 +207,16 @@ function moverPecaParaBaixo() {
                 }
             }
         }
+
+        // 2. Verifica se ao parar a peça, alguma linha é completada
         let obj = verificarLinhasCompletas();
+
+
         if(obj.num_linhas_completas > 0) {
             moverLinhasParaBaixo(obj);
             tremer();
             atualizarTabuleiro();
+            
             setTimeout(function() {
                 matriz.splice(obj.indice_linha, obj.num_linhas_completas);
                 atualizarTabuleiro();
