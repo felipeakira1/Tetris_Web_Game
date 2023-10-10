@@ -250,6 +250,11 @@ table tbody tr td:first-child {
 
 }
 
+.visu {
+    background-color: #1F1F1F;
+    border: 3px solid blue;
+}
+
 .tremer {
     animation: shake 0.3s infinite;
 }

@@ -105,12 +105,15 @@ function atualizarTabuleiro() {
         for(let j = 0; j < matriz[0].length; j++) {
             const celula = document.createElement('div'); // Cria um elemento <div> para representar uma célula do tabuleiro
             celula.classList.add('celula'); // Adiciona a classe 'celula' à célula
-            if(matriz[i][j] === 1 || matriz[i][j] === 11) {
+            let coord = matriz[i][j];
+            if(coord === 1 || coord === 11 || coord === 21) {
                 celula.classList.add('fundo-vermelho');
-            } else if(matriz[i][j] === 2 || matriz[i][j] === 12) {
+            } else if(coord === 2 || coord === 12) {
                 celula.classList.add('fundo-azul');
-            } else if(matriz[i][j] === 20) {
+            } else if(coord === 20) {
                 celula.classList.add('branco');
+            } else if(coord === 22) {
+                celula.classList.add('visu');
             }
             tabuleiro.appendChild(celula); // Adiciona a célula ao tabuleiro no HTML
         }
@@ -144,6 +147,7 @@ function adicionarPecaAoTabuleiro() {
             matriz[yPecaAtual + i][xPecaAtual + j] = pecaAtual[i][j];
         }
     }
+    desenharIndicador();
     atualizarTabuleiro(); // Atualiza a aparência do tabuleiro no HTML
 }
 
@@ -154,7 +158,7 @@ function podeMoverParaBaixo() {
     } else {
         for(let i = pecaAtual.length - 1; i >= 0; i--) {
             for(let j = pecaAtual[0].length - 1; j >= 0; j--) {
-                if(pecaAtual[i][j] != 0 && matriz[yPecaAtual + i + 1][xPecaAtual + j] > 10) {
+                if(pecaAtual[i][j] != 0 && matriz[yPecaAtual + i + 1][xPecaAtual + j] > 10 && matriz[yPecaAtual + i + 1][xPecaAtual + j] < 20) {
                     return false;
                 }
             }
@@ -236,6 +240,36 @@ function removerLinhas(obj) {
     }, 500);
 }
 
+function desenharIndicador() {
+    for(let i = 0; i < NUM_LINHAS; i++) {
+        for(let j = 0; j < NUM_COLUNAS; j++) {
+            if(matriz[i][j] > 20) {
+                matriz[i][j] = 0;
+            }
+        }
+    }
+    
+    const tempXPecaAtual = xPecaAtual;
+    const tempYPecaAtual = yPecaAtual;
+
+    while(podeMoverParaBaixo()) {
+        yPecaAtual++;
+    } 
+
+    const pecaIndicador = pecaAtual;
+    for(let i = 0; i < pecaIndicador.length; i++) {
+        for(let j = 0; j < pecaIndicador[0].length; j++) {
+            if(pecaIndicador[i][j] !== 0) {
+                matriz[yPecaAtual + i][xPecaAtual + j] = pecaIndicador[i][j] + 20;
+            }
+        }
+    }
+
+    xPecaAtual = tempXPecaAtual;
+    yPecaAtual = tempYPecaAtual;
+    atualizarTabuleiro();
+}
+
 function moverPecaParaBaixo() {
     if(podeMoverParaBaixo()) {
         for(let i = 0; i < pecaAtual.length; i++) {
@@ -271,7 +305,7 @@ function moverPecaParaBaixo() {
                 }
             }
         }
-
+        tremer();
         // 2. Verifica se ao parar a peça, alguma linha é completada
             /* A função verificarLinhasCompletas retorna um objeto com 
                 atributos que representam informações sobre as linhas completadas*/
@@ -316,6 +350,7 @@ function moverPecaParaEsquerda() {
             }
         }
     }
+    desenharIndicador();
     atualizarTabuleiro();
 }
 
@@ -337,5 +372,6 @@ function moverPecaParaDireita() {
             }
         }
     }
+    desenharIndicador();
     atualizarTabuleiro();
 }
