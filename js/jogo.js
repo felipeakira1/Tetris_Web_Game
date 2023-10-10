@@ -1,11 +1,35 @@
+let tempoDecorrido = 0; // Inicializa o tempo decorrido em segundos
+let cronometroInterval; // Variável para armazenar o intervalo do cronômetro
+let pontuacao = 0;
+
+// Função para iniciar o cronômetro
+function iniciarCronometro() {
+    cronometroInterval = setInterval(() => {
+        tempoDecorrido++;
+        atualizarTempo();
+    }, 1000); // Atualiza o tempo a cada segundo (1000ms)
+}
+
+// Função para pausar o cronômetro
+function pausarCronometro() {
+    clearInterval(cronometroInterval); // Cancela o intervalo do cronômetro
+}
+
+// Função para continuar o cronômetro
+function continuarCronometro() {
+    iniciarCronometro(); // Inicia novamente o intervalo do cronômetro
+}
+
 // Função para pausar o jogo
 function pausarJogo() {
     document.getElementById("fundo-pausa").style.display = "block";
+    pausarCronometro();
 }
 
 // Função para voltar ao jogo após a pausa
 function voltarJogo() {
     document.getElementById("fundo-pausa").style.display = "none";
+    continuarCronometro();
 }
 
 
@@ -37,14 +61,28 @@ function iniciarQueda() {
     }, INTERVALO_QUEDA);
 }
 
+// Função para atualizar o painel de tempo com o tempo decorrido
+function atualizarTempo() {
+    const tempoElement = document.getElementById("time-value");
+    const horas = Math.floor(tempoDecorrido / 3600);
+    const minutos = Math.floor((tempoDecorrido % 3600) / 60);
+    const segundos = tempoDecorrido % 60;
+    tempoElement.textContent = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+}
+
 // Configuração do botão de início
 botaoIniciar = document.getElementById('btn-iniciar');
 botaoIniciar.addEventListener('click', (event) => {
+    // Inicialize a pontuação como zero
+    pontuacao = 0;
+    document.getElementById("score-value").textContent = pontuacao;
+    document.getElementById("time-value").textContent = "00:00:00";
     event.preventDefault();
     clearInterval(funcao_queda);
     matriz = criarMatriz(NUM_LINHAS, NUM_COLUNAS);
     adicionarPecaAoTabuleiro();
     iniciarQueda();
+    iniciarCronometro();
 })
 
 // Captura de eventos de teclado para movimentação da peça
@@ -168,7 +206,7 @@ function verificarLinhasCompletas() {
             console.table(matriz);
         }
     }
-    
+
     return obj;
 }
 
@@ -240,8 +278,11 @@ function moverPecaParaBaixo() {
         let obj = verificarLinhasCompletas();
         if(obj.num_linhas_completas > 0) {
             // 3. Calcula a pontuação total
-
-            
+            pontuacao += (obj.num_linhas_completas * 10) * obj.num_linhas_completas;
+            document.getElementById("score-value").textContent = pontuacao; // Atualiza o elemento HTML com a pontuação
+            if(pontuacao >= 300) {
+                INTERVALO_QUEDA = 500;
+            }
             // 4. Animação das linhas completadas desaparecendo
             linhasCompletasEmBranco(obj);
             tremer();
@@ -298,4 +339,3 @@ function moverPecaParaDireita() {
     }
     atualizarTabuleiro();
 }
-

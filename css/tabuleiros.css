@@ -143,6 +143,7 @@ body {
     padding: 15px;
     background-color: #1F1F1F;
     border: 8px solid white;
+    border-radius: 10px;
     box-shadow: 0px 0px 5px 1px white;
 
     text-align: center;
@@ -160,6 +161,7 @@ body {
     width: 140px;
     height: 140px;
     border: 10px solid white;
+    
 }
 
 /* TABULEIRO */
@@ -169,6 +171,7 @@ body {
     box-sizing: content-box;
     background: #333533;
     border: 10px solid #FFF;
+    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
 }
