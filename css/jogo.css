@@ -1,0 +1,92 @@
+.celula {
+    width: 30px;
+    height: 30px;
+    background-color: #1f1f1f;
+    border: 1px solid #3F3F3F;
+    border-radius: 3px;
+}
+
+.fundo-vermelho {
+    background-color: red;
+    border: 3px inset red;
+    box-shadow: 0px 0px 3px 1px red;
+    z-index: 1;
+}
+
+.fundo-azul {
+    background-color: blue;
+    border: 3px inset blue;
+    box-shadow: 0px 0px 5px 1px blue;
+    z-index: 1;
+
+}
+
+.fundo-verde {
+    background-color: #00e641;
+    border: 3px inset #00FF47;
+    box-shadow: 0px 0px 5px 1px #00FF47;
+    z-index: 1;
+}
+
+.fundo-amarelo {
+    background-color: yellow;
+    border: 3px inset yellow;
+    box-shadow: 0px 0px 5px 1px yellow;
+    z-index: 1;
+}
+
+.fundo-roxo {
+    background-color: #800080;
+    border: 3px inset #c500c5;
+    box-shadow: 0px 0px 5px 1px #800080;
+    z-index: 1;
+}
+
+.fundo-laranja {
+    background-color: #FFA500;
+    border: 3px inset #FFA500;
+    box-shadow: 0px 0px 5px 1px #FFA500;
+    z-index: 1;
+}
+
+.fundo-azul-claro {
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px aqua;
+    border: 3px solid white;
+    z-index: 1;
+}
+
+.tremer {
+    animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateY(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateY(-5px); }
+    20%, 40%, 60%, 80% { transform: translateY(5px); }
+}
+
+
+@keyframes rainbow {
+    0% {
+      box-shadow: 0 0 10px 5px rgba(148, 0, 211, 0.8);
+    }
+    16% {
+      box-shadow: 0 0 10px 5px rgba(75, 0, 130, 0.8);
+    }
+    33% {
+      box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.8);
+    }
+    66% {
+      box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.8);
+    }
+    83% {
+      box-shadow: 0 0 10px 5px rgba(255, 127, 0, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.8);
+    }
+  }

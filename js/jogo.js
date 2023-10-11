@@ -40,6 +40,8 @@ function voltarJogo() {
 const NUM_COLUNAS = 10;     // Número de colunas do tabuleiro pequeno
 const NUM_LINHAS = 20;      // Número de linhas do tabuleiro pequeno
 var INTERVALO_QUEDA = 1000; // Intervalo de queda inicial da peça em milissegundos
+var quedaInterval = INTERVALO_QUEDA; // Intervalo de queda dinâmico
+var limiteQueda = 100; // limite de 100ms
 var pecaAtual = null;       // Peça atual
 var xPecaAtual;             // Posição X da peça atual
 var yPecaAtual;             // Posição Y da peça atual
@@ -66,6 +68,16 @@ function iniciarQueda() {
     }
 }
 
+function aumentarVelocidadeQueda() {
+    if(pontuacao % 300 === 0) {
+        if(quedaInterval > limiteQueda) {
+            quedaInterval -= 100; //Diminue 100ms do intervalo
+        }
+        clearInterval(funcao_queda); // Limpa o intervalo atual
+        iniciarQueda(quedaInterval); // Inicia um novo intervalo com a velocidade atualizada
+    }
+}
+
 // Função para atualizar o painel de tempo com o tempo decorrido
 function atualizarTempo() {
     const tempoElement = document.getElementById("time-value");
@@ -86,7 +98,7 @@ botaoIniciar.addEventListener('click', (event) => {
     clearInterval(funcao_queda);
     matriz = criarMatriz(NUM_LINHAS, NUM_COLUNAS);
     adicionarPecaAoTabuleiro();
-    iniciarQueda();
+    iniciarQueda(quedaInterval);
     iniciarCronometro();
 })
 
@@ -313,9 +325,6 @@ function moverPecaParaBaixo() {
             // 3. Calcula a pontuação total
             pontuacao += (obj.num_linhas_completas * 10) * obj.num_linhas_completas;
             document.getElementById("score-value").textContent = pontuacao; // Atualiza o elemento HTML com a pontuação
-            if(pontuacao >= 300) {
-                INTERVALO_QUEDA = 500;
-            }
             // 4. Animação das linhas completadas desaparecendo
             linhasCompletasEmBranco(obj);
             tremer();
@@ -324,9 +333,9 @@ function moverPecaParaBaixo() {
          }
 
         atualizarTabuleiro();
-
         pecaAtual = gerarPeca();
         adicionarPecaAoTabuleiro();
+        aumentarVelocidadeQueda();
     }
     
 }
