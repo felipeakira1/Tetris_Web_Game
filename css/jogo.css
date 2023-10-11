@@ -64,6 +64,52 @@
     background-color: rgb(227, 227, 227);
 }
 
+
+.visual-vermelho {
+    background-color: #1f1f1f;
+    border: 4px inset red;
+    opacity: 50%;
+}
+
+.visual-azul {
+    background-color: #1f1f1f;
+    border: 4px inset blue;
+    opacity: 50%;
+}
+
+.visual-verde {
+    background-color: #1f1f1f;
+    border: 4px inset #00FF47;
+    opacity: 50%;
+}
+
+.visual-amarelo {
+    background-color: #1f1f1f;
+    border: 4px inset yellow;
+    opacity: 50%;
+}
+
+.visual-roxo {
+    background-color: #1f1f1f;
+    border: 4px inset #c500c5;
+    opacity: 50%;
+}
+
+.visual-laranja {
+    background-color: #1f1f1f;
+    border: 4px inset #FFA500;
+    opacity: 50%;
+}
+
+
+.visual-azul-claros {
+    background-color: #1f1f1f;
+    
+    box-shadow: 0px 0px 10px 2px aqua;
+    border: 3px solid white;
+    opacity: 50%;
+}
+
 @keyframes shake {
     0%, 100% { transform: translateY(0); }
     10%, 30%, 50%, 70%, 90% { transform: translateY(-5px); }

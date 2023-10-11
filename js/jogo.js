@@ -140,6 +140,20 @@ function atualizarTabuleiro() {
                 celula.classList.add('fundo-azul-claro');                   
             } else if(matriz[i][j] === 20) {
                 celula.classList.add('branco');
+            } else if(matriz[i][j] === 21) {
+                celula.classList.add('visual-vermelho');
+            } else if(matriz[i][j] === 22) {
+                celula.classList.add('visual-azul');
+            } else if(matriz[i][j] === 23) {
+                celula.classList.add('visual-verde');
+            } else if(matriz[i][j] === 24) {
+                celula.classList.add('visual-amarelo');
+            } else if(matriz[i][j] === 25) {
+                celula.classList.add('visual-roxo');
+            } else if(matriz[i][j] === 26) {
+                celula.classList.add('visual-laranja');
+            } else if(matriz[i][j] === 27) {
+                celula.classList.add('visual-azul-claros');
             }
             tabuleiro.appendChild(celula); // Adiciona a célula ao tabuleiro no HTML
         }
@@ -194,6 +208,8 @@ function adicionarPecaAoTabuleiro() {
             matriz[yPecaAtual + i][xPecaAtual + j] = pecaAtual[i][j];
         }
     }
+    
+    desenharIndicador();
     atualizarTabuleiro(); // Atualiza a aparência do tabuleiro no HTML
 }
 
@@ -204,7 +220,7 @@ function podeMoverParaBaixo() {
     } else {
         for(let i = pecaAtual.length - 1; i >= 0; i--) {
             for(let j = pecaAtual[0].length - 1; j >= 0; j--) {
-                if(pecaAtual[i][j] != 0 && matriz[yPecaAtual + i + 1][xPecaAtual + j] > 10) {
+                if(pecaAtual[i][j] != 0 && matriz[yPecaAtual + i + 1][xPecaAtual + j] > 10 && matriz[yPecaAtual + i + 1][xPecaAtual + j] < 20) {
                     return false;
                 }
             }
@@ -284,6 +300,36 @@ function removerLinhas(obj) {
         atualizarTabuleiro();
 
     }, 500);
+}
+
+function desenharIndicador() {
+    for(let i = 0; i < NUM_LINHAS; i++) {
+        for(let j = 0; j < NUM_COLUNAS; j++) {
+            if(matriz[i][j] > 20) {
+                matriz[i][j] = 0;
+            }
+        }
+    }
+
+    const tempXPecaAtual = xPecaAtual;
+    const tempYPecaAtual = yPecaAtual;
+
+    while(podeMoverParaBaixo()) {
+        yPecaAtual++;
+    }
+
+    const pecaIndicador = pecaAtual;
+    for(let i = 0; i < pecaIndicador.length; i++) {
+        for(let j = 0; j < pecaIndicador[0].length; j++) {
+            if(pecaIndicador[i][j] !== 0) {
+                matriz[yPecaAtual + i][xPecaAtual + j] = pecaIndicador[i][j] + 20;
+            }
+        }
+    }
+
+    xPecaAtual = tempXPecaAtual;
+    yPecaAtual = tempYPecaAtual;
+    atualizarTabuleiro();
 }
 
 function moverPecaParaBaixo() {
@@ -366,6 +412,7 @@ function moverPecaParaEsquerda() {
             }
         }
     }
+    desenharIndicador();
     atualizarTabuleiro();
 }
 
@@ -387,5 +434,6 @@ function moverPecaParaDireita() {
             }
         }
     }
+    desenharIndicador();
     atualizarTabuleiro();
 }
