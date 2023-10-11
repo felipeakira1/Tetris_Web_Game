@@ -1,6 +1,7 @@
 let tempoDecorrido = 0; // Inicializa o tempo decorrido em segundos
 let cronometroInterval; // Variável para armazenar o intervalo do cronômetro
 let pontuacao = 0;
+let quedaPausada = false;
 
 // Função para iniciar o cronômetro
 function iniciarCronometro() {
@@ -24,12 +25,14 @@ function continuarCronometro() {
 function pausarJogo() {
     document.getElementById("fundo-pausa").style.display = "block";
     pausarCronometro();
+    quedaPausada = true;
 }
 
 // Função para voltar ao jogo após a pausa
 function voltarJogo() {
     document.getElementById("fundo-pausa").style.display = "none";
     continuarCronometro();
+    quedaPausada = false;
 }
 
 
@@ -56,9 +59,11 @@ function criarMatriz(linhas, colunas) {
 
 // Função para iniciar a queda da peça em intervalos regulares
 function iniciarQueda() {
-    funcao_queda = setInterval(() => {
-        moverPecaParaBaixo();
-    }, INTERVALO_QUEDA);
+    if(!quedaPausada) {
+        funcao_queda = setInterval(() => {
+            moverPecaParaBaixo();
+        }, INTERVALO_QUEDA);
+    }
 }
 
 // Função para atualizar o painel de tempo com o tempo decorrido
@@ -109,6 +114,16 @@ function atualizarTabuleiro() {
                 celula.classList.add('fundo-vermelho');
             } else if(matriz[i][j] === 2 || matriz[i][j] === 12) {
                 celula.classList.add('fundo-azul');
+            } else if(matriz[i][j] === 3 || matriz[i][j] === 13) {
+                celula.classList.add('fundo-verde');
+            } else if(matriz[i][j] === 4 || matriz[i][j] === 14) {
+                celula.classList.add('fundo-amarelo');
+            } else if(matriz[i][j] === 5 || matriz[i][j] === 15) {
+                celula.classList.add('fundo-roxo'); 
+            } else if(matriz[i][j] === 6 || matriz[i][j] === 16) {
+                celula.classList.add('fundo-laranja');
+            } else if(matriz[i][j] === 7 || matriz[i][j] === 17) {
+                celula.classList.add('fundo-azul-claro');                   
             } else if(matriz[i][j] === 20) {
                 celula.classList.add('branco');
             }
@@ -117,10 +132,25 @@ function atualizarTabuleiro() {
     }
 }
 
-const pecas = [
-    [[2, 2],
-     [2, 2],
-     [2, 2]]
+const pecas = 
+    [
+    [[1],[1],[1],[1]], //4 retas, vermelho
+  
+    [[0, 2],
+     [0, 2],           // L contrário, azul     
+     [2, 2]],
+
+    [[0, 3, 0], [3, 3, 3]], //joystick, verde
+
+    [[4, 4],[4, 4]],   //dado, amarelo
+
+    [[5, 0, 5], [5, 5, 5]], // U, roxo
+    
+    [[6, 0],     
+    [6, 0],           // L, laranja
+    [6, 6]],
+    
+    [[7]]           // peça especial
 ]
 
 // Função para gerar uma nova peça aleatória
@@ -237,6 +267,9 @@ function removerLinhas(obj) {
 }
 
 function moverPecaParaBaixo() {
+    if(quedaPausada) {
+        return;
+    }
     if(podeMoverParaBaixo()) {
         for(let i = 0; i < pecaAtual.length; i++) {
             for(let j = 0; j < pecaAtual[0].length; j++) {

@@ -249,7 +249,32 @@ table tbody tr td:first-child {
     box-shadow: 0px 0px 5px 1px blue;
 
 }
+.fundo-verde {
+    background-color: green;
+    border: 5px inset green;
+    box-shadow: 0px 0px 5px 1px green;
+}
+.fundo-amarelo {
+    background-color: yellow;
+    border: 5px inset yellow;
+    box-shadow: 0px 0px 5px 1px yellow;
+}
 
+.fundo-roxo {
+    background-color: purple;
+    border: 5px inset purple;
+    box-shadow: 0px 0px 5px 1px purple;
+}
+.fundo-laranja {
+    background-color: orangered;
+    border: 5px inset orangered;
+    box-shadow: 0px 0px 5px 1px orangered;
+}
+.fundo-azul-claro {
+    background-color: lightskyblue;
+    border: 5px inset lightskyblue;
+    box-shadow: 0px 0px 5px 1px lightskyblue;
+}
 .tremer {
     animation: shake 0.3s infinite;
 }
