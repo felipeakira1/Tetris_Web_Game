@@ -48,6 +48,8 @@ var yPecaAtual;             // Posição Y da peça atual
 let funcao_queda;
 const tabuleiro = document.getElementById('tabuleiro'); // Elemento do tabuleiro no HTML
 var matriz = []; // Matriz representando o tabuleiro
+var xPecaIndicador;
+var yPecaIndicador;
 
 // Função para criar uma matriz com linhas e colunas preenchidas com zeros
 function criarMatriz(linhas, colunas) {
@@ -114,6 +116,10 @@ document.addEventListener('keydown', function(event) {
     }
     if(event.key === 'ArrowRight') {
         moverPecaParaDireita();
+    }
+    if(event.key === ' ') {
+        event.preventDefault();
+        moverPecaFinal();
     }
 })
 
@@ -319,6 +325,8 @@ function desenharIndicador() {
     }
 
     const pecaIndicador = pecaAtual;
+    xPecaIndicador = xPecaAtual;
+    yPecaIndicador = yPecaAtual;
     for(let i = 0; i < pecaIndicador.length; i++) {
         for(let j = 0; j < pecaIndicador[0].length; j++) {
             if(pecaIndicador[i][j] !== 0) {
@@ -330,6 +338,41 @@ function desenharIndicador() {
     xPecaAtual = tempXPecaAtual;
     yPecaAtual = tempYPecaAtual;
     atualizarTabuleiro();
+}
+
+function moverPecaFinal() {
+    for(let i = 0; i < pecaAtual.length; i++) {
+        for(let j = 0; j < pecaAtual[0].length; j++) {
+            if(pecaAtual[i][j] != 0) {
+                matriz[yPecaAtual + i][xPecaAtual + j] = 0;
+            }
+        }
+    }
+    yPecaAtual = yPecaIndicador;
+    atualizarTabuleiro();
+    for(let i = 0; i < pecaAtual.length; i++) {
+        for(let j = 0; j < pecaAtual[0].length; j++) {
+            if(pecaAtual[i][j] != 0) {
+                matriz[yPecaAtual + i][xPecaAtual + j] = pecaAtual[i][j] + 10;
+            }
+        }
+    }
+    let obj = verificarLinhasCompletas();
+    if(obj.num_linhas_completas > 0) {
+        // 3. Calcula a pontuação total
+        pontuacao += (obj.num_linhas_completas * 10) * obj.num_linhas_completas;
+        document.getElementById("score-value").textContent = pontuacao; // Atualiza o elemento HTML com a pontuação
+        // 4. Animação das linhas completadas desaparecendo
+        linhasCompletasEmBranco(obj);
+        tremer();
+        atualizarTabuleiro();
+        removerLinhas(obj);
+        }
+    atualizarTabuleiro();
+    tremer();
+    pecaAtual = gerarPeca();
+    adicionarPecaAoTabuleiro();
+    aumentarVelocidadeQueda();
 }
 
 function moverPecaParaBaixo() {
