@@ -60,6 +60,10 @@
     animation: shake 0.3s infinite;
 }
 
+.branco {
+    background-color: rgb(227, 227, 227);
+}
+
 @keyframes shake {
     0%, 100% { transform: translateY(0); }
     10%, 30%, 50%, 70%, 90% { transform: translateY(-5px); }

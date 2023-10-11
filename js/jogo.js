@@ -94,6 +94,8 @@ botaoIniciar.addEventListener('click', (event) => {
     pontuacao = 0;
     document.getElementById("score-value").textContent = pontuacao;
     document.getElementById("time-value").textContent = "00:00:00";
+    document.getElementById("lines-value").textContent = "0";
+    document.getElementById("level-value").textContent = "1";
     event.preventDefault();
     clearInterval(funcao_queda);
     matriz = criarMatriz(NUM_LINHAS, NUM_COLUNAS);
@@ -164,6 +166,12 @@ const pecas =
     
     [[7]]           // peça especial
 ]
+
+// const pecas = [
+//     [[1, 1],
+//     [1, 1],
+//     [1, 1]]
+// ]
 
 // Função para gerar uma nova peça aleatória
 function gerarPeca() {

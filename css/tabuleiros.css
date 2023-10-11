@@ -224,10 +224,6 @@ table tbody tr td:first-child {
     cursor: pointer;
 }
 
-.branco {
-    background-color: rgb(227, 227, 227);
-}
-
 
 @media (max-height: 725px) {
     .logo {
