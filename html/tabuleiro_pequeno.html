@@ -13,16 +13,46 @@
 <body>
     <main class="game-container">
         <!-- PAUSAR O JOGO -->
-        <button class="btn-pausar" onclick="pausarJogo()">PAUSAR</button>
+        <button class="btn-pausar" id="btn-pausar">PAUSAR</button>
         <div id="fundo-pausa">
             <section class="conteudo-pausa">
                 <h2>PAUSADO</h2>
-                <button class="buttonblue" onclick="voltarJogo()">Voltar ao jogo</button>
+                <button class="buttonblue" id="btn-voltar">Voltar ao jogo</button>
                 <a href="../html/controles.html"  class="buttonblue">Controles</a>
                 <a href="../html/ranking.html"  class="buttonblue">Ranking global</a>
                 <a href="../html/menu.html" class="buttonred">Sair</a>
             </section>
         </div>
+        <!--TELA DE GAME OVER-->
+        <div id="fundo-game-over">
+            <section class="conteudo-game-over">
+                <h2>GAME OVER</h2>
+                <section>
+                    <h3>PONTUAÇÃO TOTAL</h3>
+                    <p class="pontuacao" id="pontuacao-gameover">000000</p>
+                </section>
+                <section>
+                    <h3>TEMPO</h3>
+                    <p class="tempo" id="tempo-gameover">00:00:00</p>
+                </section>
+
+                <div class="opcoes-game-over">
+                    <a href="menu.html" class="opcao-game-over">
+                        <img src="../images/menu.PNG" alt="Image 1">
+                        <p>Menu</p>
+                    </a>
+                    <a href="escolher_tabuleiro.html" class="opcao-game-over">
+                        <img src="../images/undo.PNG" alt="Image 2">
+                        <p>Reiniciar</p>
+                    </a>
+                    <a href="ranking_global.html" class="opcao-game-over">
+                        <img class="images" src="../images/rank.PNG" alt="Image 3">
+                        <p>Ranking global</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+
         <img src="../images/logo.png" alt="Logo" class="logo">
 
         <!-- CONTEUDO -->
@@ -98,7 +128,7 @@
             </div>
         </div>
     </main>
-    <script src="../js/jogo.js"></script>
+    <script type="module" src="../js/script.js"></script>
 </body>
 
 </html>
