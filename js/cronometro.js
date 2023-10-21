@@ -27,5 +27,3 @@ function atualizarTempo() {
     const segundos = tempoDecorrido % 60;
     tempoElement.textContent = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 }
-
-export {iniciarCronometro, pausarCronometro, continuarCronometro};

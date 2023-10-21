@@ -1,7 +1,3 @@
-import {configs, matriz, atualizarTabuleiro} from "./jogo.js";
-import { pontuacao, processarLinhasCompletas } from "./linhasCompletas.js";
-import { pausarCronometro } from "./cronometro.js";
-
 const pecaAtual = {
     formato: null,
     x: 0,
@@ -364,15 +360,3 @@ function rotacionarPeca() {
     atualizarTabuleiro(matriz);
     return;
 }
-
-export { 
-    adicionarPecaAoTabuleiro,
-    iniciarQueda,
-    moverPecaParaBaixo,
-    moverPecaParaEsquerda,
-    moverPecaParaDireita,
-    moverPecaFinal,
-    rotacionarPeca,
-    pecaAtual,
-    queda
-};

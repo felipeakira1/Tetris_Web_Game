@@ -1,6 +1,3 @@
-import { iniciarJogo, pausarJogo, voltarJogo } from "./jogo.js";
-import {moverPecaParaBaixo, moverPecaParaDireita, moverPecaParaEsquerda, moverPecaFinal, rotacionarPeca} from "./pecas.js"
-
 // Iniciar jogo
 const botaoIniciar = document.getElementById('btn-iniciar');
 botaoIniciar.addEventListener('click', (event) => {

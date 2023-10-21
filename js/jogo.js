@@ -1,7 +1,3 @@
-import { iniciarCronometro, pausarCronometro, continuarCronometro } from "./cronometro.js";
-import { adicionarPecaAoTabuleiro, iniciarQueda} from "./pecas.js";
-import { queda } from "./pecas.js";
-
 const configs = {
     NUM_COLUNAS: 10,
     NUM_LINHAS: 20,
@@ -97,5 +93,3 @@ function atualizarTabuleiro(matriz) {
         }
     }
 }
-
-export { configs, matriz, iniciarJogo, pausarJogo, voltarJogo, atualizarTabuleiro };

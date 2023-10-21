@@ -1,6 +1,3 @@
-import {configs, matriz, atualizarTabuleiro} from "./jogo.js";
-import { pecaAtual } from "./pecas.js";
-
 var numLinhasEliminadas = 0;
 // Objeto que contém informações sobre as linhas completas
 let obj = {
@@ -16,7 +13,7 @@ let obj = {
     pecaEspecial: false
 };
 
-let pontuacao = 0;
+pontuacao = 0;
 
 function limparObjeto() {
     obj.num_celulas_por_linha = 0;
@@ -130,9 +127,3 @@ function removerLinhas() {
 function verificarFimDeJogo() {
     
 }
-
-export {
-    pontuacao,
-    processarLinhasCompletas
-};
-
