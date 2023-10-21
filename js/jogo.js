@@ -16,7 +16,7 @@ function iniciarJogo() {
     pontuacao = 0;
     document.getElementById("score-value").textContent = pontuacao;
     document.getElementById("time-value").textContent = "00:00:00";
-    document.getElementById("lines-value").textContent = "0";
+    document.getElementById("lines-value").textContent = 0;
     document.getElementById("level-value").textContent = "1";
     matriz = criarMatriz(configs.NUM_LINHAS, configs.NUM_COLUNAS);
     adicionarPecaAoTabuleiro(matriz);

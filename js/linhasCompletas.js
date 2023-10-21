@@ -1,6 +1,7 @@
 import {configs, matriz, atualizarTabuleiro} from "./jogo.js";
 import { pecaAtual } from "./pecas.js";
 
+var numLinhasEliminadas = 0;
 // Objeto que contém informações sobre as linhas completas
 let obj = {
     // Contador que verifica se uma linha foi completada, ao contar quantas células completas há naquela linha
@@ -43,7 +44,8 @@ function processarLinhasCompletas() {
         // 3. Calcula a pontuação total
         pontuacao += (obj.num_linhas_completas * 10) * obj.num_linhas_completas;
         document.getElementById("score-value").textContent = pontuacao;
-
+        numLinhasEliminadas += 1 * obj.num_linhas_completas;
+        document.getElementById("lines-value").textContent = `${numLinhasEliminadas}`;
         // 4. Animação das linhas completadas desaparecendo
         linhasCompletasEmBranco();
         tremer();
