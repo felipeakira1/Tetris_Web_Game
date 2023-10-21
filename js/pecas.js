@@ -19,7 +19,7 @@ let yPecaIndicador;
 
 
 const queda = {
-    status: false,
+    status: false, // false = caindo, true = parar
     funcao: null,
     limite: 100,
     intervalo: 1000
@@ -373,5 +373,6 @@ export {
     moverPecaParaDireita,
     moverPecaFinal,
     rotacionarPeca,
-    pecaAtual
+    pecaAtual,
+    queda
 };

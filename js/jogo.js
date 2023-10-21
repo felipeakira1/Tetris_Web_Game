@@ -1,6 +1,6 @@
 import { iniciarCronometro, pausarCronometro, continuarCronometro } from "./cronometro.js";
 import { adicionarPecaAoTabuleiro, iniciarQueda} from "./pecas.js";
-// Variáveis globais
+import { queda } from "./pecas.js";
 
 const configs = {
     NUM_COLUNAS: 10,
@@ -28,14 +28,14 @@ function iniciarJogo() {
 function pausarJogo() {
     document.getElementById("fundo-pausa").style.display = "block";
     pausarCronometro();
-    // quedaPausada = true;
+    queda.status = true;
 }
 
 // Função para voltar ao jogo após a pausa
 function voltarJogo() {
     document.getElementById("fundo-pausa").style.display = "none";
     continuarCronometro();
-    // quedaPausada = false;
+    queda.status = false;
 }
 
 // Função para criar uma matriz com linhas e colunas preenchidas com zeros
