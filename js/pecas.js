@@ -13,7 +13,6 @@ let primeiraRodada = true;
 let xPecaIndicador;
 let yPecaIndicador;
 
-
 const queda = {
     status: false, // false = caindo, true = parar
     funcao: null,
@@ -106,9 +105,6 @@ function adicionarPecaAoTabuleiro() {
         desenharPecaAtual(0);
         desenharIndicador();
     }
-    
-    
-    
 }
 
 function atualizarPainelProximaPeca() {
@@ -189,7 +185,7 @@ function moverPecaFinal() {
 
     processarLinhasCompletas();
     atualizarTabuleiro(matriz);
-    tremer();
+    // tremer();
     adicionarPecaAoTabuleiro();
     aumentarVelocidadeQueda();
 }
@@ -231,8 +227,6 @@ function moverPecaParaBaixo() {
         desenharPecaAtual(0);
         atualizarTabuleiro(matriz);
     } else {
-        
-
         desenharPecaAtual(10);
         processarLinhasCompletas();
         atualizarTabuleiro(matriz);

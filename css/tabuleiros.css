@@ -175,6 +175,17 @@ body {
     flex-wrap: wrap;
 }
 
+.tetris-board2 {
+    width: 308px;
+    height: 616px;
+    box-sizing: content-box;
+    background: #333533;
+    border: 10px solid #FFF;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .tetris-board img {
     width: 100%;
 }

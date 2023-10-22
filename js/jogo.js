@@ -1,11 +1,6 @@
-const configs = {
-    NUM_COLUNAS: 10,
-    NUM_LINHAS: 20,
-    INTERVALO_QUEDA: 1000,
-}
-
 let matriz = [];
 let pontuacao = 0;
+let dificuldade = 1;
 
 function iniciarJogo() {
     // Limpar as informações
@@ -13,7 +8,7 @@ function iniciarJogo() {
     document.getElementById("score-value").textContent = pontuacao;
     document.getElementById("time-value").textContent = "00:00:00";
     document.getElementById("lines-value").textContent = 0;
-    document.getElementById("level-value").textContent = "1";
+    document.getElementById("level-value").textContent = `${dificuldade}`;
     matriz = criarMatriz(configs.NUM_LINHAS, configs.NUM_COLUNAS);
     adicionarPecaAoTabuleiro(matriz);
     atualizarTabuleiro(matriz);
@@ -57,7 +52,11 @@ function atualizarTabuleiro(matriz) {
     for (let i = 0; i < matriz.length; i++) {
         for (let j = 0; j < matriz[0].length; j++) {
             const celula = document.createElement('div'); // Cria um elemento <div> para representar uma célula do tabuleiro
-            celula.classList.add('celula'); // Adiciona a classe 'celula' à célula
+            if(configs.NUM_COLUNAS == 10) {
+                celula.classList.add('celula'); // Adiciona a classe 'celula' à célula
+            } else {
+                celula.classList.add('celulaPequena')
+            }
             if (matriz[i][j] === 1 || matriz[i][j] === 11) {
                 celula.classList.add('fundo-vermelho');
             } else if (matriz[i][j] === 2 || matriz[i][j] === 12) {

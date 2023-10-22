@@ -1,4 +1,6 @@
 var numLinhasEliminadas = 0;
+var tabuleiroInvertido = 0;
+
 // Objeto que contém informações sobre as linhas completas
 let obj = {
     // Contador que verifica se uma linha foi completada, ao contar quantas células completas há naquela linha
@@ -23,10 +25,14 @@ function limparObjeto() {
 }
 
 function inverterTabuleiro() {
-    for(let i = 0; i < configs.NUM_LINHAS; i++) {
-        matriz[i] = matriz[i].reverse();
+    console.log(tabuleiroInvertido)
+    const tabuleiro = document.getElementById('tabuleiro');
+    if(!tabuleiroInvertido) {
+        tabuleiro.classList.add('inverter');
+        tabuleiroInvertido = 1;
+    } else {
+        tabuleiro.classList.remove('inverter');
     }
-    atualizarTabuleiro(matriz);
 }
 
 function processarLinhasCompletas() {
@@ -38,14 +44,12 @@ function processarLinhasCompletas() {
             inverterTabuleiro();
         }
         
-        // 3. Calcula a pontuação total
         pontuacao += (obj.num_linhas_completas * 10) * obj.num_linhas_completas;
         document.getElementById("score-value").textContent = pontuacao;
         numLinhasEliminadas += 1 * obj.num_linhas_completas;
         document.getElementById("lines-value").textContent = `${numLinhasEliminadas}`;
-        // 4. Animação das linhas completadas desaparecendo
+        
         linhasCompletasEmBranco();
-        tremer();
         atualizarTabuleiro(matriz);
         removerLinhas(obj);
     }
