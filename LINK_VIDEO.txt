@@ -1,5 +1,10 @@
+PARCIAL 1: 
 O link para visualizar o video é: 
 https://youtu.be/eoQooGMVdkY
+
+PARCIAL 2:
+O link para visualizar o video é: 
+https://www.youtube.com/watch?v=K-8eFFgtuvE&ab_channel=FelipeAkiraNozaki
 
 O arquivo inícial está contido na pasta
 /html/login.html

@@ -25,7 +25,6 @@ function limparObjeto() {
 }
 
 function inverterTabuleiro() {
-    console.log(tabuleiroInvertido)
     const tabuleiro = document.getElementById('tabuleiro');
     if(!tabuleiroInvertido) {
         tabuleiro.classList.add('inverter');
@@ -37,7 +36,6 @@ function inverterTabuleiro() {
 }
 
 function processarLinhasCompletas() {
-    console.log(obj.pecaEspecial);
     limparObjeto();
     verificarLinhasCompletas();
     if (obj.num_linhas_completas > 0) {
