@@ -32,29 +32,28 @@ function inverterTabuleiro() {
         tabuleiroInvertido = 1;
     } else {
         tabuleiro.classList.remove('inverter');
+        tabuleiroInvertido = 0;
     }
 }
 
 function processarLinhasCompletas() {
+    console.log(obj.pecaEspecial);
     limparObjeto();
     verificarLinhasCompletas();
-
     if (obj.num_linhas_completas > 0) {
         if(obj.pecaEspecial === true) {
             inverterTabuleiro();
         }
-        
         pontuacao += (obj.num_linhas_completas * 10) * obj.num_linhas_completas;
         document.getElementById("score-value").textContent = pontuacao;
         numLinhasEliminadas += 1 * obj.num_linhas_completas;
         document.getElementById("lines-value").textContent = `${numLinhasEliminadas}`;
-        
         linhasCompletasEmBranco();
         atualizarTabuleiro(matriz);
         removerLinhas(obj);
+        atualizarTabuleiro(matriz);
     }
 }
-
 
 function verificarLinhasCompletas() {
     for (let i = 0; i < configs.NUM_LINHAS; i++) {
@@ -125,7 +124,7 @@ function removerLinhas() {
         }
         atualizarTabuleiro(matriz);
 
-    }, 500);
+    }, 300);
 }
 
 function verificarFimDeJogo() {
