@@ -50,7 +50,7 @@ main {
 
 .container--login {
     width: 550px;
-    gap: 50px;
+    gap: 30px;
 }
 
 .container--cadastro {
@@ -71,7 +71,7 @@ main {
 }
 
 .formulario--login {
-    gap: 35px;
+    gap: 25px;
     font-size: 20px;
 }
 
@@ -125,7 +125,14 @@ main {
 
 }
 
+.cadastrar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .btn-azul {
+    margin-top: 15px;
     background-color: var(--cor-do-botao-azul);
 }
 
@@ -152,6 +159,49 @@ main {
 
 input[readonly] {
     color: grey;
+}
+
+#login-falha {
+    display: none;
+    color: red;
+    font-size: 18px;
+}
+
+#login-sucesso {
+    display: none;
+    position: fixed;
+    top: 40px;
+    background-color: #FAFAFA;
+    
+    padding: 20px 25px;
+    border-radius: 5px;
+    width: 330px;
+    height: 100px;
+    border-radius: 10px;
+
+    animation: falling 0.5s ease-out;
+}
+
+#login-sucesso h3 {
+    color: black;
+    font-weight: 800px;
+    font-size: 20px;
+}
+
+#barra-progresso {
+    margin-top: 20px;
+    background-color: green;
+    height: 5px;
+    width: 0%;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-200px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 @media (min-height: 850px) {
