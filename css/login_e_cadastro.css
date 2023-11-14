@@ -171,7 +171,7 @@ input[readonly] {
     display: none;
     position: fixed;
     top: 40px;
-    background-color: #FAFAFA;
+    background-color: var(--container);
     
     padding: 20px 25px;
     border-radius: 5px;
@@ -183,14 +183,13 @@ input[readonly] {
 }
 
 #login-sucesso h3 {
-    color: black;
     font-weight: 800px;
     font-size: 20px;
 }
 
 #barra-progresso {
     margin-top: 20px;
-    background-color: green;
+    background-color: #16db65;
     height: 5px;
     width: 0%;
 }
