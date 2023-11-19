@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    // Caso não esteja logado
+    if(!isset($_SESSION['id'])) {
+        header("Location: Acesso_Negado.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -11,7 +20,7 @@
 </head>
 
 <body>
-    <a class="btn-voltar" href="menu.html">VOLTAR</a>
+    <a class="btn-voltar" href="../php/Menu.php">VOLTAR</a>
     <header class="titulo">
         <h1>CONTROLES</h1>
     </header>

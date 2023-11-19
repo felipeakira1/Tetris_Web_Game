@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    // Caso não esteja logado
+    if(!isset($_SESSION['id'])) {
+        header("Location: Acesso_Negado.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,7 +18,7 @@
     <title>Tetris</title>
 </head>
 <body>
-    <a href="../html/menu.html" class="btn-voltar">VOLTAR</a>
+    <a href="../php/Menu.php" class="btn-voltar">VOLTAR</a>
     <div class="escolher-tabuleiro">
         <header>
             <h1>ESCOLHA O SEU TABULEIRO</h1>
@@ -17,12 +27,12 @@
             <div class="tabuleiro">
                 <img src="../images/tabuleiro_pequeno.png" alt="">
                 <p>Tabuleiro pequeno (10x20)</p>
-                <a href="../html/tabuleiro_pequeno.html" class="btn-escolher">ESCOLHER</a>
+                <a href="../php/TabuleiroPequeno.php" class="btn-escolher">ESCOLHER</a>
             </div>
             <div class="tabuleiro">
                 <img src="../images/tabuleiro_grande.png" alt="">
                 <p>Tabuleiro grande (22x44)</p>
-                <a href="../html/tabuleiro_grande.html" class="btn-escolher">ESCOLHER</a>
+                <a href="../php/TabuleiroGrande.php" class="btn-escolher">ESCOLHER</a>
             </div>
         </main>
     </div>

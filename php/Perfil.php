@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    // Caso não esteja logado
+    if(!isset($_SESSION['id'])) {
+        header("Location: Acesso_Negado.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,7 +18,7 @@
     <title>Tetris</title>
 </head>
 <body>
-    <a href="../html/menu.html" class="btn-voltar">VOLTAR</a>
+    <a href="../php/Menu.php" class="btn-voltar">VOLTAR</a>
     <main>
         <div class="container container--cadastro">
             <section class="titulo">

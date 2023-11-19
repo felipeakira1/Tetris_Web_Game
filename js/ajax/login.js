@@ -26,10 +26,9 @@ function verificar_login(event) {
                 let resposta = JSON.parse(xhttp.responseText);
 
                 if(resposta.status === "success") {
-                    let id = resposta.id;
                     login_sucesso();
                     setTimeout(function() {
-                        window.location.href ='menu.html';
+                        window.location.href ='Menu.php';
                     }, 2000);
                 }
             } catch(error) {
@@ -39,7 +38,7 @@ function verificar_login(event) {
             alert("Erro na requisição. Status: " + xhttp.status);
         }
     }
-    xhttp.open('POST', '../php/Login.php', true);
+    xhttp.open('POST', '../php/verificar_login.php', true);
 
     xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 

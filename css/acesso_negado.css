@@ -1,0 +1,41 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--cor-de-fundo);
+    display: flex;
+    justify-content: center;
+    font-family: "Open Sans";
+}
+
+#toast {
+    position: fixed;
+    top: 200px;
+    background-color: var(--container);
+    padding: 40px 45px;
+    border-radius: 5px;
+    width: 600px;
+    border-radius: 10px;
+    animation: falling 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#toast p {
+    font-size: 20px;
+}
+
+#barra-progresso {
+    background-color: #16db65;
+    height: 5px;
+    width: 0%;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-200px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
