@@ -245,3 +245,14 @@ input[readonly] {
         height: 50px;
     }
 }
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none; /* Inicialmente esconder a mensagem de erro */
+}
+
+.input-error {
+    border: 1px solid red;
+}
