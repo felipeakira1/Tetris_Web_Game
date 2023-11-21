@@ -124,7 +124,3 @@ function removerLinhas() {
 
     }, 300);
 }
-
-function verificarFimDeJogo() {
-    
-}

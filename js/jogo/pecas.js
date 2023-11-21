@@ -12,6 +12,7 @@ var fimDeJogo = false;
 var primeiraRodada = true;
 var xPecaIndicador;
 var yPecaIndicador;
+var nivel = 1;
 
 const queda = {
     status: false, // false = caindo, true = parar
@@ -53,31 +54,6 @@ function gerarPeca() {
     return tiposPecas[tipoPeca];
 }
 
-
-function verificarFimDeJogo() {
-    for(let linha = 0; linha < pecaAtual.formato.length; linha++) {
-        for(let coluna = 0; coluna < pecaAtual.formato[0].length; coluna++) {
-            if(pecaAtual.formato[linha][coluna] !== 0 && matriz[pecaAtual.y + linha][pecaAtual.x + coluna] > 0 && matriz[pecaAtual.y + linha][pecaAtual.x + coluna] < 20) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-function exibirTelaFimDeJogo() {
-    // Função para pausar o jogo
-    document.getElementById("fundo-game-over").style.display = "block";
-    pausarCronometro();
-    queda.status = false;
-    // Atualiza a pontuação e o tempo na tela de Game Over
-    const pontuacaoGameOver = document.getElementById("pontuacao-gameover");
-    const tempoGameOver = document.getElementById("tempo-gameover");
-    const pontuacaoString = parseInt(pontuacao).toString();
-    pontuacaoGameOver.textContent = pontuacaoString;
-    tempoGameOver.textContent = document.getElementById("time-value").textContent;
-}
-
 // Função para adicionar a peça atual ao tabuleiro
 function adicionarPecaAoTabuleiro() {
     if(fimDeJogo == false) {
@@ -100,6 +76,7 @@ function adicionarPecaAoTabuleiro() {
         pecaAtual.y = 0; // Define a posição Y inicial da peça
         if(verificarFimDeJogo()) {
             fimDeJogo = true;
+            salvarDadosPartida();
             exibirTelaFimDeJogo();
         }
         desenharPecaAtual(0);
@@ -147,7 +124,6 @@ function atualizarPainelProximaPeca() {
     }
 }
 
-var nivel = 1;
 var marcaTrezentos = false;
 var marcaSeiscentos = false;
 var marcaNovecentos = false;

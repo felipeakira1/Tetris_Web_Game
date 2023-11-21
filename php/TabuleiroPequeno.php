@@ -6,6 +6,16 @@
         header("Location: Acesso_Negado.php");
         exit;
     }
+    $jogador_id = $_SESSION['id'];
+    require_once("Conexao.php");
+    $conexao = new Conexao();
+    $pdo = $conexao->getPdo();
+
+    $query = "SELECT * FROM partida  WHERE jogador_id = :jogador_id ORDER BY pontuacao DESC LIMIT 10";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':jogador_id', $jogador_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $resultados_ranking = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +89,9 @@
                     <div id="time-value">00:00:00</div>
                 </section>
                 
+                
                 <section class="panel ranking">
                     <h2>RANKING PESSOAL</h2>
-                    <p>@felipeakira_</p>
                     <table>
                         <thead>
                             <tr>
@@ -92,24 +102,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1.</td>
-                                <td>12020</td>
-                                <td>00:05:32</td>
-                                <td>5</td>
-                            </tr> 
-                            <tr>
-                                <td>2.</td>
-                                <td>11340</td>
-                                <td>00:04:45</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>3.</td>
-                                <td>9340</td>
-                                <td>00:03:25</td>
-                                <td>3</td>
-                            </tr>
+                        <?php
+                            foreach($resultados_ranking as $posicao =>$dados_partida) {
+                                echo "<tr>";
+                                echo "<td>" . ($posicao + 1) . "</td>";
+                                echo "<td>" . $dados_partida['pontuacao'] . "</td>";
+
+                                // Verificar se a chave 'tempo' existe
+                                echo "<td>" . $dados_partida['tempo_da_partida'] . "</td>";
+
+                                // Verificar se a chave 'nivel' existe
+                                echo "<td>" . $dados_partida['nivel_dificuldade'] . "</td>";
+
+                                echo "</tr>";
+                            }
+                        ?>  
                         </tbody>
                     </table>
                 </section>

@@ -29,6 +29,69 @@ function voltarJogo() {
     queda.status = false;
 }
 
+// Funçõo chamada no arquivo pecas.js
+function verificarFimDeJogo() {
+    for(let linha = 0; linha < pecaAtual.formato.length; linha++) {
+        for(let coluna = 0; coluna < pecaAtual.formato[0].length; coluna++) {
+            if(pecaAtual.formato[linha][coluna] !== 0 && matriz[pecaAtual.y + linha][pecaAtual.x + coluna] > 0 && matriz[pecaAtual.y + linha][pecaAtual.x + coluna] < 20) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function exibirTelaFimDeJogo() {
+    // Função para pausar o jogo
+    document.getElementById("fundo-game-over").style.display = "block";
+    pausarCronometro();
+    queda.status = false;
+    // Atualiza a pontuação e o tempo na tela de Game Over
+    const pontuacaoGameOver = document.getElementById("pontuacao-gameover");
+    const tempoGameOver = document.getElementById("tempo-gameover");
+    const pontuacaoString = parseInt(pontuacao).toString();
+    pontuacaoGameOver.textContent = pontuacaoString;
+    tempoGameOver.textContent = document.getElementById("time-value").textContent;
+}
+
+function salvarDadosPartida() {
+    let xhttp = new XMLHttpRequest();
+
+    if(!xhttp) {
+        alert("Não foi possível criar um objeto XMLHttpRequest");
+        return false;
+    }
+
+    xhttp.onerror = function() {
+        alert("Erro!");
+    }
+
+    xhttp.onload = function () {
+        if(xhttp.status === 200) {
+            try {
+                let resposta = JSON.parse(xhttp.responseText);
+                console.log(resposta.jogador_id);
+                console.log(resposta.tempoDecorrido);
+                console.log(resposta.nivel);
+
+            } catch (e) {
+                console.error("Erro ao analisar a resposta JSON: ", e);
+                console.log("Resposta recebida: ", xhttp.responseText);
+            }
+        } else {
+            alert("Erro na requisição. Status: " + xhttp.status);
+        }
+    }
+    xhttp.open('POST', '../php/salvarPartida.php', true);
+    xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhttp.send(
+        'pontuacao=' + encodeURIComponent(pontuacao) +
+        '&tempoDecorrido=' + encodeURIComponent(tempoDecorrido) +
+        '&linhasEliminadas=' + encodeURIComponent(numLinhasEliminadas) + 
+        '&nivel=' + encodeURIComponent(nivel)
+    );
+}
+
 // Função para criar uma matriz com linhas e colunas preenchidas com zeros
 function criarMatriz(linhas, colunas) {
     const matriz = []; // Limpa o conteúdo do tabuleiro

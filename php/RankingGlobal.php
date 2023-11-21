@@ -6,7 +6,16 @@
         header("Location: Acesso_Negado.php");
         exit;
     }
+
+    require_once "Conexao.php";
+    $conexao = new Conexao();
+    $pdo = $conexao->getPdo();
+    $query = "SELECT * FROM partida p JOIN jogador j ON p.jogador_id = j.id ORDER BY pontuacao DESC LIMIT 10";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,53 +39,23 @@
     <table class="ranking">
         <tr>
             <th>Posição</th>
-            <th>Nome</th>
+            <th>Username</th>
+            <th>Linhas</th>
             <th>Level</th>
             <th>Tempo</th>
             <th>Pontuação</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Jogador A</td>
-            <td>10</td>
-            <td>15:45</td>
-            <td>5000</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jogador B</td>
-            <td>8</td>
-            <td>12:30</td>
-            <td>4200</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Jogador C</td>
-            <td>8</td>
-            <td>12:30</td>
-            <td>4200</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Jogador D</td>
-            <td>8</td>
-            <td>12:30</td>
-            <td>4200</td>
-        </tr>
-        <tr class="usuario">
-            <td>5</td>
-            <td>Voce</td>
-            <td>8</td>
-            <td>12:30</td>
-            <td>4200</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Jogador E</td>
-            <td>8</td>
-            <td>12:30</td>
-            <td>4200</td>
-        </tr>
+        <?php
+            foreach ($resultados as $posicao => $resultado): ?>
+                <tr>
+                    <td><?php echo $posicao + 1; ?></td>
+                    <td><?php echo $resultado['username']; ?></td>
+                    <td><?php echo $resultado['linhas_eliminadas']; ?></td>
+                    <td><?php echo $resultado['nivel_dificuldade']; ?></td>
+                    <td><?php echo $resultado['tempo_da_partida']; ?></td>
+                    <td><?php echo $resultado['pontuacao']; ?></td>
+                </tr>   
+        <?php endforeach; ?>
     </table>
 
 

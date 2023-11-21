@@ -1,3 +1,43 @@
+<?php
+session_start();
+require_once("Conexao.php");
+
+function validatePasswords($password1, $password2) {
+    if (strcmp($password1, $password2) !== 0) {
+        echo "As senhas não coincidem";
+        exit();
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $conexao = new Conexao();
+    $pdo = $conexao->getPdo();
+
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+    $data_nasc = filter_input(INPUT_POST, 'data-nasc', FILTER_SANITIZE_STRING);
+    $telefone = filter_input(INPUT_POST, 'number', FILTER_SANITIZE_STRING);
+    $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+
+    validatePasswords($_POST['senha'], $_POST['confirmar-senha']);
+
+    $sql = "INSERT INTO jogador (nome_completo, data_nascimento, cpf, telefone, email, username, senha)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$nome, $data_nasc, $cpf, $telefone, $email, $username, $senha]);
+
+        header('Location: ../php/Login.php');
+        exit(); 
+    } catch(PDOException $e) {
+        echo "Erro ao cadastrar jogador: " . $e->getMessage();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -10,14 +50,14 @@
 </head>
 
 <body>
-    <a href="../html/login.html" class="btn-voltar">VOLTAR</a>
+    <a href="../php/Login.php" class="btn-voltar">VOLTAR</a>
     <main>
         <div class="container container--cadastro">
             <section class="titulo">
                 <h1>CADASTRO</h1>
                 <p>Crie uma nova conta</p>
             </section>
-            <form action="../html/login.html" class="formulario formulario--cadastro">
+            <form action="../php/Cadastro.php" method="POST" class="formulario formulario--cadastro">
                 <div class="input-inteiro">
                     <label for="nome">Nome completo</label>
                     <input type="text" name="nome" id="nome" placeholder="Digite o seu nome" autocomplete="off"

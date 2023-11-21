@@ -53,7 +53,7 @@
             </form>
             <div class="cadastrar">
                 <p>Não possui uma conta?</p>
-                <a href="../html/cadastro.html" class="btn btn-cinza">CADASTRE-SE</a>
+                <a href="../php/Cadastro.php" class="btn btn-cinza">CADASTRE-SE</a>
             </div>
         </div>
     </main>
