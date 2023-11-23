@@ -13,13 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conexao = new Conexao();
     $pdo = $conexao->getPdo();
 
-    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
     $data_nasc = filter_input(INPUT_POST, 'data-nasc', FILTER_SANITIZE_STRING);
     $telefone = filter_input(INPUT_POST, 'number', FILTER_SANITIZE_STRING);
     $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     validatePasswords($_POST['senha'], $_POST['confirmar-senha']);
 
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nome, $data_nasc, $cpf, $telefone, $email, $username, $senha]);
+        $stmt->execute([$nome, $data_nasc, $cpf, $telefone, $email, $username, $senhaHash]);
 
         header('Location: ../php/Login.php');
         exit(); 
@@ -71,23 +72,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="input-metade">
                         <label for="number">Telefone</label>
                         <input type="text" name="number" id="number" placeholder="Digite o seu telefone"
-                            autocomplete="off" required>
+                            autocomplete="off" min-length="15" maxlength='15' required>
                     </div>
                 </div>
                 <label class="input-inteiro">
                     CPF
-                    <input type="text" name="cpf" id="cpf" placeholder="Digite o seu CPF" autocomplete="off" required>
+                    <input type="text" name="cpf" id="cpf" placeholder="Digite o seu CPF" 
+                            autocomplete="off" min-length="14" maxlength='14' required>
+                    <div class="error-message" id="cpf-error" style="color: red; display: none;"></div>
                 </label>
                 <label class="input-inteiro">
                     E-mail
-                    <input type="email" name="email" id="email" placeholder="Digite o seu e-mail" autocomplete="off"
-                        required>
+                    <input type="email" name="email" id="email" placeholder="Digite o seu e-mail" autocomplete="off" required>
+                    <div class="error-message" id="email-error" style="color: red; display: none;"></div>
                 </label>
+
                 <label class="input-inteiro">
                     Username
                     <input type="text" name="username" id="username" placeholder="Digite o seu username"
                         autocomplete="off" required>
+                    <div class="error-message" id="username-error" style="color: red; display: none;"></div>
                 </label>
+
                 <div class="dois-inputs">
                     <label class="input-metade">
                         Senha
@@ -104,6 +110,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </main>
+    <script src="../js/ajax/mascaras.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/ajax/verificacao_email.js"></script>
+    <script src="../js/ajax/verificacao_cpf.js"></script>
+    <script src="../js/ajax/verificacao_username.js"></script>
 </body>
 
 </html>

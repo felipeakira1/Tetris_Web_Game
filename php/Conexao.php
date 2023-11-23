@@ -4,9 +4,9 @@ class Conexao {
 
     public function __construct() {
         $DB_HOST = "localhost";
-        $DB_NAME = "Tetris";
+        $DB_NAME = "tetris";
         $DB_USER = "root";
-        $DB_PASSWORD = "123";
+        $DB_PASSWORD = "";
 
         $dsn = "mysql:host=" . $DB_HOST . ";dbname=" . $DB_NAME;
         try {

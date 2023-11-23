@@ -15,10 +15,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         if($result) {
             while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                if($row['email'] == $email && $row['senha'] == $senha) {
-                    $resposta = array("status" => "success");
-                    $_SESSION['id'] = $row['id'];
-                    break;
+                if($row['email'] == $email) {
+                    if(password_verify($senha, $row['senha'])) {
+                        $resposta = array("status" => "success");
+                        $_SESSION['id'] = $row['id'];
+                        break;
+                    }
                 }
             }
         } else {

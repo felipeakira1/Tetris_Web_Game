@@ -17,6 +17,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 50px;
 }
 
 .btn-voltar {
@@ -80,18 +81,18 @@ main {
     font-size: 16px;
 }
 
-.formulario > .input-inteiro {
+.input-inteiro {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.formulario label {
+label {
     cursor: pointer;
 }
 
-.formulario input {
+input {
     padding: 15px;
     border-radius: 5px;
     background: var(--cor-do-input);
@@ -102,23 +103,23 @@ main {
     transition: border 0.3s ease-in-out;
 }
 
-.formulario input:hover,
-.formulario input:focus {
+input:hover,
+input:focus {
     border: 1px solid #F5F5F5;
 }
 
-.formulario a {
+a {
     font-size: 16px;
 }
 
-.formulario > .dois-inputs {
+.dois-inputs {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.formulario > .dois-inputs > .input-metade {
+.dois-inputs > .input-metade {
     width: 49%;
     display: flex;
     flex-direction: column;
@@ -194,6 +195,12 @@ input[readonly] {
     width: 0%;
 }
 
+#alterarSenha {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+}
+
 @keyframes falling {
     0% {
         transform: translateY(-200px);
@@ -244,4 +251,43 @@ input[readonly] {
         font-size: 16px;
         height: 50px;
     }
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none;
+}
+
+.input-error {
+    border: 1px solid red;
+}
+
+#div_mensagem {
+    display: none;
+    position: fixed;
+    top: 40px;
+    background-color: var(--container);
+    
+    padding: 20px 25px;
+    border-radius: 5px;
+    width: 500px;
+    height: 100px;
+    border-radius: 10px;
+
+    animation: falling 0.5s ease-out;
+    box-shadow: 0 0 10px white;
+}
+
+#div_mensagem h3 {
+    font-weight: 800px;
+    font-size: 20px;
+}
+
+#barra-progresso {
+    margin-top: 20px;
+    background-color: #16db65;
+    height: 5px;
+    width: 0%;
 }

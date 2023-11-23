@@ -1,0 +1,130 @@
+* {
+    font-family: "Open Sans";
+}
+body {
+    background-color: var(--cor-de-fundo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    background-color: var(--container);
+    width: 600px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-size: 20px;
+}
+
+.input-inteiro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dois-inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dois-inputs > .input-metade {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    padding: 15px;
+    border-radius: 5px;
+    background: var(--cor-do-input);
+    font-size: 16px;
+    height: 40px;
+    outline: none;
+    border: 1px solid var(--cor-do-input);
+    transition: border 0.3s ease-in-out;
+}
+
+input:hover,
+input:focus {
+    border: 1px solid #F5F5F5;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    height: 55px;
+    box-shadow: 8px 8px 0px 0px #3E250D;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: var(--cor-do-botao-azul);
+}
+
+.btn-voltar {
+    height: 60px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1F1F1F;
+    font-family: "Press Start 2P", cursive;
+    font-size: 18px;
+    border: none;
+    position: fixed;
+    left: 20px;
+    top: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-voltar:hover {
+    background-color: #333533;
+}
+
+#div_mensagem {
+    display: none;
+    position: fixed;
+    top: 40px;
+    background-color: var(--container);
+    
+    padding: 20px 25px;
+    border-radius: 5px;
+    width: 500px;
+    height: 100px;
+    border-radius: 10px;
+
+    animation: falling 0.5s ease-out;
+}
+
+#div_mensagem h3 {
+    font-weight: 800px;
+    font-size: 20px;
+}
+
+#barra-progresso {
+    margin-top: 20px;
+    background-color: #16db65;
+    height: 5px;
+    width: 0%;
+}
